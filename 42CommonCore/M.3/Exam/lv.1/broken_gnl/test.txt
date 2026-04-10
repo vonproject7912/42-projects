@@ -1,5 +1,0 @@
-line 0 (perhaps)
-line 1 (alors peut etre)
-line 2 (sucess)
-line 3 (bro u done ?)
-line 4 (haa... any more tests ?)

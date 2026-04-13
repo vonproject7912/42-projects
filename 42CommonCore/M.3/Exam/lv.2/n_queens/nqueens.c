@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 09:19:13 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/10 16:08:22 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/13 08:24:13 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // check if it's safe to place a queen in this position
 // keep in mind that 'board' stores the ROW position
 // of the queen in each column
+// i = columns & board[i] => row
 int	safe_placing(int row, int col, int *board)
 {
 	int	i;

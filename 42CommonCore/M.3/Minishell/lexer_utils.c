@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 12:13:58 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/13 15:04:29 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/13 15:08:12 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_putstr(int fd, char *str)
 	}
 }
 
-// Checks if all quotes in the string are closed.
 int	quotes_checking(char *str)
 {
 	int	i;

@@ -6,23 +6,11 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 12:13:58 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/13 15:08:12 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/14 10:18:19 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	ft_putstr(int fd, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(fd, &str[i], 1);
-		i++;
-	}
-}
 
 int	quotes_checking(char *str)
 {
@@ -63,4 +51,32 @@ void	err(int *lst_ext, char *str)
 {
 	ft_putstr(2, str);
 	*lst_ext = 2;
+}
+
+t_token *new_token()
+{
+	t_token *token;
+	
+	token = malloc(sizeof(t_token));
+	if (!token)
+		return(NULL);
+	token->value = NULL;
+    token->next = NULL;
+    token->quote = 0;
+	return(token);
+}
+
+void add_token(t_token **lst, t_token *new)
+{
+	t_token *current;
+
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	current = *lst;
+	while (current->next)
+		current =current->next;
+	current->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 12:13:58 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/14 10:18:19 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/14 10:26:09 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,22 @@ void	err(int *lst_ext, char *str)
 	*lst_ext = 2;
 }
 
-t_token *new_token()
+t_token	*new_token(void)
 {
-	t_token *token;
-	
+	t_token	*token;
+
 	token = malloc(sizeof(t_token));
 	if (!token)
-		return(NULL);
+		return (NULL);
+	token->quote = 0;
+	token->next = NULL;
 	token->value = NULL;
-    token->next = NULL;
-    token->quote = 0;
-	return(token);
+	return (token);
 }
 
-void add_token(t_token **lst, t_token *new)
+void	add_token(t_token **lst, t_token *new)
 {
-	t_token *current;
+	t_token	*current;
 
 	if (!*lst)
 	{
@@ -77,6 +77,6 @@ void add_token(t_token **lst, t_token *new)
 	}
 	current = *lst;
 	while (current->next)
-		current =current->next;
+		current = current->next;
 	current->next = new;
 }

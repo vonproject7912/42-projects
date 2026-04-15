@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:28:36 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/15 09:59:52 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/15 10:02:31 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	handle_single_quote(int *i, char *str, t_token **my_tokens)
 	add_token(my_tokens, token);
 }
 
-void	handle_double_quote(int *i, char *str, t_token **my_tokens) "heloooo"
+void	handle_double_quote(int *i, char *str, t_token **my_tokens)
 {
 	int		start;
 	t_token	*token;

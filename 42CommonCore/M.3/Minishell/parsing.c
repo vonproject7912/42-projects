@@ -6,26 +6,28 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:04:11 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/15 12:48:21 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/16 12:36:04 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-/*
-Parsing also:
-- splits commands by `PIPE` into separate `t_cmd` nodes
-- builds `argv[]` for each command
-- attaches `t_redir` linked list to each command
-- catches syntax errors (`|` with no command, `>` with no filename etc.)
-- returns the `t_cmd` linked list ready for the expander then executor
+/* splits commands by PIPE into separate t_cmd nodes
+builds argv[] for each command
+attaches t_redir linked list to each command
+catches syntax errors (| with no command, > with no filename etc.)
+returns the t_cmd linked list ready for the expander then executor 
+
+Because the lexer's only job is to split and label — it doesn't know yet if a word is 
+a command, an argument, or a filename. That context comes from the parser, which 
+groups tokens into commands by splitting on PIPE and assigns words to argv.
 */
+
+#include "minishell.h"
 
 void split_command(t_token *my_tokens)
 {
-    // actually spliting things into an array with pipes
-    // free my "my_tokens"
-    // build and loop over each command and put them into a cmd node
-    // return the node
+    // split commands by pipe into a cmd linked list
+    // progressievlly also free my_token
+    // return the cmd linked list
 }
 
 void build_argv(t_cmd *commands)
@@ -37,9 +39,26 @@ void build_argv(t_cmd *commands)
 
 void parsing(int lst_ext, t_token *my_tokens)
 {
-    // function for the commands building
-    // call for my split command function
-    // build my actual argv
-    // return the argv to the expand 
-    // then expand to the exec
+    // call for my split_command function
+    // call for my build_arg function
+    // return the argv 
+    // (for the expand then to the exec)
+}
+
+void ??(t_token **tokens)
+{
+    t_cmd *commands;
+
+    commands = malloc(sizeof(t_cmd));
+    if (!commands)
+        return (NULL);
+    
+}
+
+// split my tokens into a cmd linked list by pipes
+// fill each commands with their argv and redirections
+
+int parsing(int *lst_ext, t_token ** tokens)
+{
+    
 }

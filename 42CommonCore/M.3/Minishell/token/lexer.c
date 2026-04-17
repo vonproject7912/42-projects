@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:28:36 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/15 10:02:31 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 08:39:25 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	handle_operators(int *i, char *str, t_token **my_tokens)
 	add_token(my_tokens, token);
 }
 
-t_token	*lexer(char *str, int *lst_ext)
+t_token	*lexer(int *lst_ext, char *str)
 {
 	int		i;
 	t_token	*my_tokens;

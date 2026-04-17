@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:13:26 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 16:05:06 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 16:56:32 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,20 @@ int	is_operator(char c)
 	return (0);
 }
 
-void	token_routine(int *i, int *adj, char *str, t_token **my_tokens)
+void	value_assign(int *i, char *str, t_token *token)
 {
-	if (str[i++] == ' ' || str[i++] == '\t')
-	{
-		adj = 0;
-		i++;
-	}
-	else if (str[i] == '\'')
-		handle_single_quote(&i, &adj, str, &my_tokens);
-	else if (str[i] == '"')
-		handle_double_quote(&i, &adj, str, &my_tokens);
-	else if (is_operator(str[i]))
-		handle_operators(&i, &adj, str, &my_tokens);
+	if (str[*i] == '|')
+		token->value = ft_strndup("|", 1);
+	else if (str[*i] == '>' && str[*i + 1] == '>')
+		token->value = ft_strndup(">>", 2);
+	else if (str[*i] == '<' && str[*i + 1] == '<')
+		token->value = ft_strndup("<<", 2);
+	else if (str[*i] == '<')
+		token->value = ft_strndup("<", 1);
+	else if (str[*i] == '>')
+		token->value = ft_strndup(">", 1);
+	if (token->type == REDIR_APPEND || token->type == HEREDOC)
+		*i += 2;
 	else
-		handle_anything_else(&i, &adj, str, &my_tokens);
+		*i += 1;
 }

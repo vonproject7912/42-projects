@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 12:06:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 16:05:14 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 16:57:59 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,19 @@ void	merge_last_token(t_token *my_tokens, char *new_str)
 	}
 }
 
-void	value_assign(int *i, char *str, t_token *token)
+void	token_routine(int *i, int *adj, char *str, t_token **my_tokens)
 {
-	if (str[*i] == '|')
-		token->value = ft_strndup("|", 1);
-	else if (str[*i] == '>' && str[*i + 1] == '>')
-		token->value = ft_strndup(">>", 2);
-	else if (str[*i] == '<' && str[*i + 1] == '<')
-		token->value = ft_strndup("<<", 2);
-	else if (str[*i] == '<')
-		token->value = ft_strndup("<", 1);
-	else if (str[*i] == '>')
-		token->value = ft_strndup(">", 1);
-	if (token->type == REDIR_APPEND || token->type == HEREDOC)
-		*i += 2;
+	if (str[*i++] == ' ' || str[*i++] == '\t')
+	{
+		adj = 0;
+		(*i)++;
+	}
+	else if (str[*i] == '\'')
+		handle_single_quote(i, &adj, str, &my_tokens);
+	else if (str[*i] == '"')
+		handle_double_quote(i, &adj, str, &my_tokens);
+	else if (is_operator(str[*i]))
+		handle_operators(i, &adj, str, &my_tokens);
 	else
-		*i += 1;
+		handle_anything_else(i, &adj, str, &my_tokens);
 }

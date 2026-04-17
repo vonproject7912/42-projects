@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 10:00:07 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 10:34:24 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/17 14:11:01 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/17 14:11:02 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,28 @@ char	*ft_strndup(char *str, int len)
 	return (dst);
 }
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int j;
-	char *str;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
 	j = 0;
-	str = malloc (sizeof(char) * (strlen(s1) + strlen(s2)) + 1);
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!str)
-		return(NULL);
-	while (s1[i])
+		return (NULL);
+	if (!s1)
+		return (ft_strndup(s2, ft_strlen(s2)));
+	if (!s2)
+		return (ft_strndup(s1, ft_strlen(s1)));
+	while (s1[i++])
 	{
 		str[i] = s1[i];
 		i++;
 	}
 	while (s2[j])
-	{
-		str[i] = s2[j];
-		i++;
-	}
+		str[i++] = s2[j++];
 	str[i] = '\0';
 	return (str);
 }

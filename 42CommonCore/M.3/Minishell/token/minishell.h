@@ -1,0 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/11 16:20:16 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/17 11:26:28 by vonpr            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MINISHELL_H
+# define MINISHELL_H
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+typedef enum es_type
+{
+	WORD,
+	PIPE,
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_APPEND,
+	HEREDOC,
+}					t_type;
+
+typedef struct s_token
+{
+	t_type			type;
+	char			*value;
+	int				quote;
+	struct s_token	*next;
+}					t_token;
+
+// typedef struct s_redir
+// {
+// 	t_type			type;
+// 	char			*file;
+// 	s_redir			*next;
+// }					t_redir;
+
+// typedef struct s_cmd
+// {
+// 	char			**argv;
+// 	t_redir			*redirs;
+// 	s_cmd			*next;
+// }					t_cmd;
+
+// utils
+int					ft_strlen(char *str);
+void				ft_putstr(int fd, char *str);
+char				*ft_strndup(char *str, int len);
+char				*ft_strjoin(char *s1, char *s2);
+
+// token utils
+t_token				*new_token(void);
+void				add_token(t_token **lst, t_token *new);
+t_token				*get_last_token(t_token *lst);
+void				merge_last_token(t_token *my_tokens, char *new_str);
+
+// lexer itself
+
+#endif

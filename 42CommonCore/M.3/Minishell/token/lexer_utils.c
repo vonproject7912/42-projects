@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 12:13:58 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 08:39:42 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/17 09:58:12 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/17 10:54:21 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,4 @@ void	err(int *lst_ext, char *str)
 {
 	ft_putstr(2, str);
 	*lst_ext = 2;
-}
-
-t_token	*new_token(void)
-{
-	t_token	*token;
-
-	token = malloc(sizeof(t_token));
-	if (!token)
-		return (NULL);
-	token->quote = 0;
-	token->next = NULL;
-	token->value = NULL;
-	return (token);
-}
-
-void	add_token(t_token **lst, t_token *new)
-{
-	t_token	*current;
-
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	current = *lst;
-	while (current->next)
-		current = current->next;
-	current->next = new;
 }

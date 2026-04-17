@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 11:23:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 11:23:47 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/17 12:06:10 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/17 12:06:11 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_token	*new_token(void)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = malloc(sizeof(t_token));
 	if (!token)
@@ -27,7 +27,7 @@ t_token	*new_token(void)
 
 void	add_token(t_token **lst, t_token *new)
 {
-	t_token *current;
+	t_token	*current;
 
 	if (!*lst)
 	{
@@ -42,7 +42,7 @@ void	add_token(t_token **lst, t_token *new)
 
 t_token	*get_last_token(t_token *lst)
 {
-	t_token *last_token;
+	t_token	*last_token;
 
 	last_token = lst;
 	while (last_token->next != NULL)
@@ -52,8 +52,8 @@ t_token	*get_last_token(t_token *lst)
 
 void	merge_last_token(t_token *my_tokens, char *new_str)
 {
-	char *old_value;
-	t_token *last_token;
+	char	*old_value;
+	t_token	*last_token;
 
 	last_token = get_last_token(my_tokens);
 	old_value = last_token->value;

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:20:16 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 17:00:10 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 17:23:05 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,5 @@ void				handle_anything_else(int *i, int *adj, char *str,
 void				handle_operators(int *i, int *adj, char *str,
 						t_token **my_tokens);
 t_token				*lexer(int *lst_ext, char *str);
-
-void				run_test(char *input);
 
 #endif

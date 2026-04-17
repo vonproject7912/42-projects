@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:11:43 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 16:54:56 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 17:23:12 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (ft_strndup(s2, ft_strlen(s2)));
 	if (!s2)
 		return (ft_strndup(s1, ft_strlen(s1)));
-	while (s1[i++])
+	while (s1[i])
 	{
 		str[i] = s1[i];
 		i++;

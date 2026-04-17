@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 09:58:12 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 10:54:21 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/17 14:13:26 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/17 16:05:06 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,19 @@ int	is_operator(char c)
 	return (0);
 }
 
-void	err(int *lst_ext, char *str)
+void	token_routine(int *i, int *adj, char *str, t_token **my_tokens)
 {
-	ft_putstr(2, str);
-	*lst_ext = 2;
+	if (str[i++] == ' ' || str[i++] == '\t')
+	{
+		adj = 0;
+		i++;
+	}
+	else if (str[i] == '\'')
+		handle_single_quote(&i, &adj, str, &my_tokens);
+	else if (str[i] == '"')
+		handle_double_quote(&i, &adj, str, &my_tokens);
+	else if (is_operator(str[i]))
+		handle_operators(&i, &adj, str, &my_tokens);
+	else
+		handle_anything_else(&i, &adj, str, &my_tokens);
 }

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:20:16 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 11:26:28 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 16:06:30 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,22 @@ t_token				*new_token(void);
 void				add_token(t_token **lst, t_token *new);
 t_token				*get_last_token(t_token *lst);
 void				merge_last_token(t_token *my_tokens, char *new_str);
+void				value_assign(int *i, char *str, t_token *token);
 
-// lexer itself
+// lexer utils
+int					quotes_checking(char *str);
+int					is_operator(char c);
+void				token_routine(int *i, int *adj, char *str,
+						t_token **my_tokens);
+// actual lexer
+void				handle_single_quote(int *i, int *adj, char *str,
+						t_token **my_tokens);
+void				handle_double_quote(int *i, int *adj, char *str,
+						t_token **my_tokens);
+void				handle_anything_else(int *i, int *adj, char *str,
+						t_token **my_tokens);
+void				handle_operators(int *i, int *adj, char *str,
+						t_token **my_tokens);
+t_token				*lexer(int *lst_ext, char *str);
 
 #endif

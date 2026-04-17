@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 12:06:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 14:01:16 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 16:05:14 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,18 @@ void	merge_last_token(t_token *my_tokens, char *new_str)
 	}
 }
 
-void value_assign(int *i, char *str, t_token *token)
+void	value_assign(int *i, char *str, t_token *token)
 {
 	if (str[*i] == '|')
-	    token->value = ft_strndup("|", 1);
+		token->value = ft_strndup("|", 1);
 	else if (str[*i] == '>' && str[*i + 1] == '>')
-	    token->value = ft_strndup(">>", 2);
+		token->value = ft_strndup(">>", 2);
 	else if (str[*i] == '<' && str[*i + 1] == '<')
-	    token->value = ft_strndup("<<", 2);
+		token->value = ft_strndup("<<", 2);
 	else if (str[*i] == '<')
-	    token->value = ft_strndup("<", 1);
+		token->value = ft_strndup("<", 1);
 	else if (str[*i] == '>')
-	    token->value = ft_strndup(">", 1);
+		token->value = ft_strndup(">", 1);
 	if (token->type == REDIR_APPEND || token->type == HEREDOC)
 		*i += 2;
 	else

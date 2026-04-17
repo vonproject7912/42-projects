@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 10:00:07 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 10:00:08 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 10:34:24 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,29 @@ char	*ft_strndup(char *str, int len)
 	}
 	dst[i] = '\0';
 	return (dst);
+}
+
+char *ft_strjoin(char *s1, char *s2)
+{
+	int i;
+	int j;
+	char *str;
+
+	i = 0;
+	j = 0;
+	str = malloc (sizeof(char) * (strlen(s1) + strlen(s2)) + 1);
+	if (!str)
+		return(NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		str[i] = s2[j];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

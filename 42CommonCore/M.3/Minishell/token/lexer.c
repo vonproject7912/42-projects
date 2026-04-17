@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:28:36 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 16:06:56 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/17 16:14:37 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ t_token	*lexer(int *lst_ext, char *str)
 //     while (tmp)
 //     {
 //         printf("Token %d: type=%d | value='%s'\n", i++, tmp->type,
-	tmp->value);
+	// tmp->value);
 	//         tmp = tmp->next;
 	//     }
 	//     printf("\n");
@@ -178,16 +178,16 @@ t_token	*lexer(int *lst_ext, char *str)
 		// Should be 3 tokens: grep | | | file
 
 	//         /* 4. Environment Variables (Lexer shouldn't expand,
-	just keep as WORD) */
-//         "echo $USER",
-//         "echo \"$USER\"",
-//         "echo '$USER'",             // Difference is handled in expansion,
-	not lexer
+// 	just keep as WORD) */
+// //         "echo $USER",
+// //         "echo \"$USER\"",
+// //         "echo '$USER'",             // Difference is handled in expansion,
+// 	not lexer
 
-//         /* 5. Edge cases / Syntax errors */
-//         "|||",                      // 3 PIPE tokens
-//         ">>>",                      // REDIR_APPEND
-	+ REDIR_OUT (or syntax error later)
+// //         /* 5. Edge cases / Syntax errors */
+// //         "|||",                      // 3 PIPE tokens
+// //         ">>>",                      // REDIR_APPEND
+// 	+ REDIR_OUT (or syntax error later)
 //         "   ",                      // Should return NULL or empty
 //         "\"unclosed quote",         // Your choice: error or literal
 //         NULL

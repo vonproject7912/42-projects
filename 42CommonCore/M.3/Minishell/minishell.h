@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:20:16 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 17:23:05 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/18 16:20:50 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ typedef struct s_token
 	struct s_token	*next;
 }					t_token;
 
-// typedef struct s_redir
-// {
-// 	t_type			type;
-// 	char			*file;
-// 	s_redir			*next;
-// }					t_redir;
+typedef struct s_redir
+{
+	t_type			type;
+	char			*file;
+	s_redir			*next;
+}					t_redir;
 
-// typedef struct s_cmd
-// {
-// 	char			**argv;
-// 	t_redir			*redirs;
-// 	s_cmd			*next;
-// }					t_cmd;
+typedef struct s_cmd
+{
+	char			**argv;
+	t_redir			*redirs;
+	s_cmd			*next;
+}					t_cmd;
 
 // utils
 int					ft_strlen(char *str);

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:20:16 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/18 16:20:50 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/19 12:26:36 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define SUCCESS 0
+# define SYNTAX_ERROR 2
+# define MALLOC_ERROR 1
 
 typedef enum es_type
 {

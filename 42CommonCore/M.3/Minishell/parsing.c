@@ -6,35 +6,43 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:04:11 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/19 12:44:19 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/19 16:47:39 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// parse() — main loop, splits by PIPE, returns t_cmd *
-// parse_command() — builds one t_cmd (argv + redirs), stops at PIPE
-// append_redir() — handles redirection tokens
+int	is_redir(t_type type)
+{
+	if (type == REDIR_IN || type == REDIR_OUT || type == REDIR_APPEND
+		|| type == HEREDOC)
+		return (1);
+	else
+		return (0);
+}
 
-// int parse_command(int lst_ext, t_cmd *command)
-// {
-//     char **argv; // create an argv
-//     int size_argv; // my counter
-//     t_token *current; // my reader
+int	parse_command(int *lst_ext, t_token **tokens, t_cmd *command)
+{
+	int		size;
+	t_token	*current;
 
-//     size_argv = 0;
-//     current = *tokens;
-//     // get the size of my argv
-//     while (*token->type != PIPE && *token->next != NULL)
-//     {
-//         size_argv += 1;
-//         current = current->next;
-//     } // to allocate the argv
-//     argv = malloc(sizeof(char *) * (size_argv + 1));
-//     if (!argv)
-//         return (NULL);
-//     commands->argv = argv;
-// }
+	size = 0;
+	current = *tokens;
+	while (current && current->type != PIPE)
+	{
+		if (current->type == WORD)
+			size++;
+		else if (is_redir(current->type))
+			current = current->next;
+		if (current)
+			current = current->next;
+	}
+	command->argv = malloc(sizeof(char *) * (size + 1));
+	if (!command->argv)
+		return (1);
+	// function that fill everything
+	return (*lst_ext);
+}
 
 // t_cmd *append_redir(int lst_ext, t_cmd *commands)
 // {

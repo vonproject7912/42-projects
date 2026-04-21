@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/11 16:28:36 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/17 17:22:54 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/21 11:08:31 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/21 11:12:46 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,27 @@ void	handle_double_quote(int *i, int *adj, char *str, t_token **my_tokens)
 	*adj = 1;
 }
 
+void	handle_operators(int *i, int *adj, char *str, t_token **my_tokens)
+{
+	t_token	*token;
+
+	*adj = 0;
+	token = new_token();
+	token->quote = 0;
+	if (str[*i] == '|')
+		token->type = PIPE;
+	else if (str[*i] == '>' && str[*i + 1] == '>')
+		token->type = REDIR_APPEND;
+	else if (str[*i] == '<' && str[*i + 1] == '<')
+		token->type = HEREDOC;
+	else if (str[*i] == '<')
+		token->type = REDIR_IN;
+	else if (str[*i] == '>' && str[*i + 1] != '>')
+		token->type = REDIR_OUT;
+	value_assign(i, str, token);
+	add_token(my_tokens, token);
+}
+
 void	handle_anything_else(int *i, int *adj, char *str, t_token **my_tokens)
 {
 	int		start;
@@ -86,27 +107,6 @@ void	handle_anything_else(int *i, int *adj, char *str, t_token **my_tokens)
 		add_token(my_tokens, token);
 	}
 	*adj = 1;
-}
-
-void	handle_operators(int *i, int *adj, char *str, t_token **my_tokens)
-{
-	t_token	*token;
-
-	*adj = 0;
-	token = new_token();
-	token->quote = 0;
-	if (str[*i] == '|')
-		token->type = PIPE;
-	else if (str[*i] == '>' && str[*i + 1] == '>')
-		token->type = REDIR_APPEND;
-	else if (str[*i] == '<' && str[*i + 1] == '<')
-		token->type = HEREDOC;
-	else if (str[*i] == '<')
-		token->type = REDIR_IN;
-	else if (str[*i] == '>' && str[*i + 1] != '>')
-		token->type = REDIR_OUT;
-	value_assign(i, str, token);
-	add_token(my_tokens, token);
 }
 
 t_token	*lexer(int *lst_ext, char *str)

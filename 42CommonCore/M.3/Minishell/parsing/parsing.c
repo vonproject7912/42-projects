@@ -6,51 +6,51 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 12:23:43 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/21 15:51:20 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int add_str(t_token *tokens)
+int	add_str(int *lst_ext, t_token **tokens, t_cmd *command)
 {
-	// int		size;
-	// t_token	*current;
+	int		size;
+	t_token	*current;
 
-	// size = 0;
-	// current = tokens;
-	// while (current && current->type != PIPE)
-	// {
-	// 	if (current->type == WORD)
-	// 		size++;
-	// 	else if (current && is_redir(current->type))
-	// 		current = current->next;
-	// 	if (current)
-	// 		current = current->next;
-	// }
-	// command->argv = malloc(sizeof(char *) * (size + 1));
-	// if (!command->argv)
-	// 	return (malloc_err(*lst_ext), NULL);
+	size = 0;
+	current = (*tokens);
+	while (current && current->type != PIPE)
+	{
+		if (current->type == WORD)
+			size++;
+		current = current->next;
+	}
+	command->argv = malloc(sizeof(char *) * (size + 1));
+	if (!command->argv)
+		return (1);
+	return (0);
 }
 
-void cmd_fill(int *lst_ext, t_token *tokens, t_cmd *commands) //FOR **TOKENS
+int	cmd_fill(int *lst_ext, t_token **tokens, t_cmd *command)
 {
 	int	i;
 
 	i = 0;
-	// add str function !!
-	while (*tokens && (*tokens)->type != PIPE)
+	if (add_str(lst_ext, tokens, command))
+		return (1);
+	while ((*tokens) && (*tokens)->type != PIPE)
 	{
 		if ((*tokens)->type == WORD)
 		{
 			command->argv[i] = ft_strdup((*tokens)->value);
-			*tokens = (*tokens)->next;
+			if (!command->argv[i])
+				return (1);
+			(*tokens) = (*tokens)->next;
 			i++;
 		}
-		else if (is_redir((*tokens)->type))
+		else if ((*tokens)->type != WORD)
 		{
-			if (append_redir(lst_ext, tokens, command))
-				return (1);
+			// handles redirections function
 		}
 	}
 	command->argv[i] = NULL;
@@ -58,11 +58,9 @@ void cmd_fill(int *lst_ext, t_token *tokens, t_cmd *commands) //FOR **TOKENS
 	return (0);
 }
 
-///////////////////////////////////////////////////////////////
-
 t_cmd	*append_cmd(int *lst_ext, t_token **tokens, t_cmd *commands)
 {
-	t_cmd *current_cmd;
+	t_cmd	*current_cmd;
 
 	if (!(*tokens))
 		return (NULL);
@@ -70,8 +68,10 @@ t_cmd	*append_cmd(int *lst_ext, t_token **tokens, t_cmd *commands)
 	{
 		current_cmd = new_cmd();
 		if (!current_cmd)
-			return (malloc_err(lst_ext), NULL);
-		// function that fills each command
+			return (malloc_err(lst_ext), free_commands(&commands), NULL);
+		if (cmd_fill(lst_ext, tokens, current_cmd))
+			return (malloc_err(lst_ext), free_commands(&current_cmd),
+				free_commands(&commands), NULL);
 		if ((*tokens) && (*tokens)->type == PIPE)
 			(*tokens) = (*tokens)->next;
 		add_cmd(&commands, current_cmd);
@@ -91,7 +91,7 @@ t_cmd	*parse(int *lst_ext, t_token **tokens)
 	}
 	commands = append_cmd(lst_ext, tokens, commands);
 	if (*lst_ext == 1)
-		return (free_tokens(tokens), NULL);
+		return (free_tokens(tokens), free_commands(&commands), NULL);
 	free_tokens(tokens);
 	return (commands);
 }

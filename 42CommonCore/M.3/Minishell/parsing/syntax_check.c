@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:17:37 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 11:17:38 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/21 11:31:39 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	pipe_err(void)
 {
-	ft_putstr(2, "minishell: syntax error near unexpected token '|'");
+	ft_putstr(2, "minishell: syntax error near unexpected token '|'\n");
 }
 
 void	redir_err(void)
 {
-	ft_putstr(2, "minishell: syntax error near unexpected token 'newline'");
+	ft_putstr(2, "minishell: syntax error near unexpected token 'newline'\n");
 }
 
 int	last_token_check(t_token *current)

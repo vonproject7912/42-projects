@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 11:16:11 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/21 11:19:45 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,11 @@ void				handle_operators(int *i, int *adj, char *str,
 void				handle_anything_else(int *i, int *adj, char *str,
 						t_token **my_tokens);
 t_token				*lexer(int *lst_ext, char *str);
+
+// syntax check
+void				pipe_err(void);
+void				redir_err(void);
+int					last_token_check(t_token *current);
+int					syntax_check(t_token *tokens);
 
 #endif

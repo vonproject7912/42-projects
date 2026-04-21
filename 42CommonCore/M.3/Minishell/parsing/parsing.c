@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:04:11 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/20 13:25:42 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/21 11:00:04 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void free_tokens(t_token **tokens)
 	}
 }
 
+t_cmd *append_cmd(int *lst_ext, t_token *tokens, t_cmd *commands)
+{
+	commands = NULL;
+	if (!(*tokens))
+		return (NULL);
+	// loop
+}
+
 t_cmd	*parse(int *lst_ext, t_token **tokens)
 {
 	t_cmd *commands;
@@ -37,15 +45,15 @@ t_cmd	*parse(int *lst_ext, t_token **tokens)
 		*lst_ext = 2;
 		return(free_tokens(tokens), NULL);
 	}
-	commands = append_cmd(*lst_ext, tokens, commands);
+	commands = append_cmd(*lst_ext, tokens, commands); // append_cmd
 	if (*lst_ext == 1)
 		return (free_tokens(tokens), NULL);
 	free_tokens(tokens);
 	return (commands);
 }
 
-//////////////////////////////////////////////////////
-/*
+///////////////////////////////////////////////////////////////
+
 int	filling(t_token **tokens, t_cmd *command)
 {
 	int	i;
@@ -140,4 +148,3 @@ t_cmd	*parse(int *lst_ext, t_token **tokens)
 	// function that frees my tokens
 	return (commands);
 }
-*/

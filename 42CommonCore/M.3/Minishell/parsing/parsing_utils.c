@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 09:45:59 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/20 12:50:46 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/21 10:58:47 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	add_cmd(t_cmd **lst, t_cmd *new)
 		current = current->next;
 	current->next = new;
 }
+
+///////////////////////////////////////////
 
 int	is_redir(t_type type)
 {

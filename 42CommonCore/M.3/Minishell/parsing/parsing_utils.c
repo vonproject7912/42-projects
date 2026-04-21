@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/19 09:45:59 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 11:14:57 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/21 11:19:22 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/21 11:32:55 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,26 @@ void	add_cmd(t_cmd **lst, t_cmd *new)
 	current->next = new;
 }
 
-///////////////////////////////////////////
+void	free_tokens(t_token **tokens)
+{
+	t_token	*current;
+
+	if (!tokens || !(*tokens))
+		return ;
+	while (*tokens)
+	{
+		current = (*tokens)->next;
+		free((*tokens)->value);
+		free(*tokens);
+		*tokens = current;
+	}
+}
+
+void	malloc_err(int *lst_ext)
+{
+	*lst_ext = 1;
+	ft_putstr(2, "minishell: malloc error\n");
+}
 
 int	is_redir(t_type type)
 {

@@ -5,60 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 10:04:11 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 11:15:00 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/21 12:23:43 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tokens(t_token **tokens)
+int add_str(t_token *tokens)
 {
-	t_token	*current;
+	// int		size;
+	// t_token	*current;
 
-	if (!tokens || !(*tokens))
-		return ;
-	while (*tokens)
-	{
-		current = (*tokens)->next;
-		free((*tokens)->value);
-		free(*tokens);
-		*tokens = current;
-	}
+	// size = 0;
+	// current = tokens;
+	// while (current && current->type != PIPE)
+	// {
+	// 	if (current->type == WORD)
+	// 		size++;
+	// 	else if (current && is_redir(current->type))
+	// 		current = current->next;
+	// 	if (current)
+	// 		current = current->next;
+	// }
+	// command->argv = malloc(sizeof(char *) * (size + 1));
+	// if (!command->argv)
+	// 	return (malloc_err(*lst_ext), NULL);
 }
 
-t_cmd	*append_cmd(int *lst_ext, t_token *tokens, t_cmd *commands)
-{
-	commands = NULL;
-	if (!(*tokens))
-		return (NULL);
-	// loop
-}
-
-t_cmd	*parse(int *lst_ext, t_token **tokens)
-{
-	t_cmd	*commands;
-
-	commands = NULL;
-	if (syntax_check(*tokens))
-	{
-		*lst_ext = 2;
-		return (free_tokens(tokens), NULL);
-	}
-	commands = append_cmd(*lst_ext, tokens, commands); // append_cmd
-	if (*lst_ext == 1)
-		return (free_tokens(tokens), NULL);
-	free_tokens(tokens);
-	return (commands);
-}
-
-///////////////////////////////////////////////////////////////
-
-int	filling(t_token **tokens, t_cmd *command)
+void cmd_fill(int *lst_ext, t_token *tokens, t_cmd *commands) //FOR **TOKENS
 {
 	int	i;
 
 	i = 0;
+	// add str function !!
 	while (*tokens && (*tokens)->type != PIPE)
 	{
 		if ((*tokens)->type == WORD)
@@ -78,6 +58,46 @@ int	filling(t_token **tokens, t_cmd *command)
 	return (0);
 }
 
+///////////////////////////////////////////////////////////////
+
+t_cmd	*append_cmd(int *lst_ext, t_token **tokens, t_cmd *commands)
+{
+	t_cmd *current_cmd;
+
+	if (!(*tokens))
+		return (NULL);
+	while ((*tokens))
+	{
+		current_cmd = new_cmd();
+		if (!current_cmd)
+			return (malloc_err(lst_ext), NULL);
+		// function that fills each command
+		if ((*tokens) && (*tokens)->type == PIPE)
+			(*tokens) = (*tokens)->next;
+		add_cmd(&commands, current_cmd);
+	}
+	return (commands);
+}
+
+t_cmd	*parse(int *lst_ext, t_token **tokens)
+{
+	t_cmd	*commands;
+
+	commands = NULL;
+	if (syntax_check(*tokens))
+	{
+		*lst_ext = 2;
+		return (free_tokens(tokens), NULL);
+	}
+	commands = append_cmd(lst_ext, tokens, commands);
+	if (*lst_ext == 1)
+		return (free_tokens(tokens), NULL);
+	free_tokens(tokens);
+	return (commands);
+}
+
+///////////////////////////////////////////////////////////////
+
 int	append_redir(int *lst_ext, t_token **tokens, t_cmd *command)
 {
 	if ((*tokens)->type == REDIR_IN)
@@ -94,57 +114,4 @@ int	append_redir(int *lst_ext, t_token **tokens, t_cmd *command)
 	else
 		command->redirs->file = ft_strdup((*tokens)->value);
 	return (*lst_ext);
-}
-
-int	parse_command(int *lst_ext, t_token **tokens, t_cmd *command)
-{
-	int		size;
-	t_token	*current;
-
-	size = 0;
-	current = *tokens;
-	while (current && current->type != PIPE)
-	{
-		if (current->type == WORD)
-			size++;
-		else if (is_redir(current->type))
-			current = current->next;
-		if (current)
-			current = current->next;
-	}
-	// check if the pipe has a command afterwards
-	command->argv = malloc(sizeof(char *) * (size + 1));
-	if (!command->argv)
-		return (1);
-	filling(tokens, commands);
-	return (*lst_ext);
-}
-
-t_cmd	*parse(int *lst_ext, t_token **tokens)
-{
-	t_cmd	*commands;
-	t_cmd	*current_cmd;
-
-	commands = NULL;
-	while (*tokens != NULL)
-	{
-		current_cmd = new_cmd();
-		if (!current_cmd)
-			return (NULL);
-		if (parse_command(lst_ext, tokens, current_cmd) == SYNTAX_ERROR)
-		{
-			// free function for tokens, new_cmd and commands
-			return (NULL);
-		}
-		add_cmd(&commands, current_cmd);
-		if (*tokens && (*tokens)->type == PIPE)
-		{
-			*tokens = (*tokens)->next;
-			if (*tokens == NULL)
-				return (printf("minishell: syntax error near unexpected token `|'\n"),
-					*lst_ext = 2, NULL);
-		}
-	}
-	// function that frees my tokens
-	return (commands);
 }

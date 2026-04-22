@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:09:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 15:10:25 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 13:43:50 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	free_tokens(t_token **tokens)
 	}
 }
 
-void free_redir(t_cmd **commands)
+void	free_redir(t_cmd **commands)
 {
-	t_redir *current_redir;
+	t_redir	*current_redir;
 
 	while ((*commands)->redirs)
 	{
@@ -42,11 +42,11 @@ void free_redir(t_cmd **commands)
 
 void	free_commands(t_cmd **commands)
 {
-	int i;
+	int		i;
 	t_cmd	*current;
 
 	if (!commands || !(*commands))
-	return ;
+		return ;
 	while (*commands)
 	{
 		i = 0;

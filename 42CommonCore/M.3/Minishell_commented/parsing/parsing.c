@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 13:39:48 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 15:41:11 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	add_str(t_token **tokens, t_cmd *command)
 {
 	int		size;
-	t_token	*current;
+	t_token	*current; feur
 
 	size = 0;
 	current = (*tokens);

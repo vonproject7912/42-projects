@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 13:48:43 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:27:34 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# define SUCCESS 0
-# define SYNTAX_ERROR 2
-# define MALLOC_ERROR 1
 
 typedef enum es_type
 {
@@ -43,14 +39,14 @@ typedef struct s_redir
 {
 	t_type			type;
 	char			*file;
-	s_redir			*next;
+	struct s_redir	*next;
 }					t_redir;
 
 typedef struct s_cmd
 {
 	char			**argv;
 	t_redir			*redirs;
-	s_cmd			*next;
+	struct s_cmd	*next;
 }					t_cmd;
 
 // utils
@@ -75,6 +71,8 @@ void				token_routine(int *i, int *adj, char *str,
 
 // actual lexer
 void				token_routine(int *i, int *adj, char *str,
+						t_token **my_tokens);
+void				handle_single_quote(int *i, int *adj, char *str,
 						t_token **my_tokens);
 void				handle_double_quote(int *i, int *adj, char *str,
 						t_token **my_tokens);
@@ -107,7 +105,7 @@ int					append_redir(t_token **tokens, t_cmd *command);
 
 // actual parsing
 int					add_str(t_token **tokens, t_cmd *command);
-int					cmd_fill(int *lst_ext, t_token **tokens, t_cmd *command);
+int					cmd_fill(t_token **tokens, t_cmd *command);
 t_cmd				*append_cmd(int *lst_ext, t_token **tokens,
 						t_cmd *commands);
 t_cmd				*parse(int *lst_ext, t_token **tokens);

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 15:59:46 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:31:50 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	add_str(t_token **tokens, t_cmd *command)
 }
 
 // fill one command with a token
-int	cmd_fill(int *lst_ext, t_token **tokens, t_cmd *command)
+int	cmd_fill(t_token **tokens, t_cmd *command)
 {
 	int	i;
 
@@ -94,7 +94,7 @@ t_cmd	*append_cmd(int *lst_ext, t_token **tokens, t_cmd *commands)
 		if (!current_cmd) // check for malloc errors
 			return (malloc_err(lst_ext), free_commands(&commands), NULL);
 		// fill the actual command + malloc error check
-		if (cmd_fill(lst_ext, tokens, current_cmd))
+		if (cmd_fill(tokens, current_cmd))
 			return (malloc_err(lst_ext), free_commands(&current_cmd),
 				free_commands(&commands), NULL);
 		// if there is a pipe skip the pipe token

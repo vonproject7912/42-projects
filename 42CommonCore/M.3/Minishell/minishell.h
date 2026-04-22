@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 12:54:18 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 13:48:43 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_token
 
 typedef struct s_redir
 {
-	t_type			type; //
-	char			*file; //
+	t_type			type;
+	char			*file;
 	s_redir			*next;
 }					t_redir;
 
@@ -91,11 +91,25 @@ int					last_token_check(t_token *current);
 int					syntax_check(t_token *tokens);
 
 // parsing utils
+t_cmd				*new_cmd(void);
+void				add_cmd(t_cmd **lst, t_cmd *new);
+void				malloc_err(int *lst_ext);
 
 // parsing free utils
+void				free_tokens(t_token **tokens);
+void				free_redir(t_cmd **commands);
+void				free_commands(t_cmd **commands);
 
 // redirections
+t_redir				*new_redir(void);
+void				add_redir(t_redir **lst, t_redir *new);
+int					append_redir(t_token **tokens, t_cmd *command);
 
 // actual parsing
+int					add_str(t_token **tokens, t_cmd *command);
+int					cmd_fill(int *lst_ext, t_token **tokens, t_cmd *command);
+t_cmd				*append_cmd(int *lst_ext, t_token **tokens,
+						t_cmd *commands);
+t_cmd				*parse(int *lst_ext, t_token **tokens);
 
 #endif

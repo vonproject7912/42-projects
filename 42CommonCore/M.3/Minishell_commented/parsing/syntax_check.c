@@ -1,65 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   syntax_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 10:04:11 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/20 12:43:42 by vonpr            ###   ########.fr       */
+/*   Created: 2026/04/21 11:17:37 by vonpr             #+#    #+#             */
+/*   Updated: 2026/04/21 11:31:39 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// parse() — main loop, splits by PIPE, returns t_cmd *
-// parse_command() — builds one t_cmd (argv + redirs), stops at PIPE
-// append_redir() — handles redirection tokens
-
-void pipe_err(void)
+void	pipe_err(void)
 {
-	ft_putstr(2, "minishell: syntax error near unexpected token '|'");
+	ft_putstr(2, "minishell: syntax error near unexpected token '|'\n");
 }
 
-void redir_err(void)
+void	redir_err(void)
 {
-	ft_putstr(2, "minishell: syntax error near unexpected token 'newline'");
+	ft_putstr(2, "minishell: syntax error near unexpected token 'newline'\n");
 }
 
-int last_token_check(t_token	*current)
+int	last_token_check(t_token *current)
 {
 	if (current->type == PIPE)
-		return (pipe_err(),	1); // Last token is PIPE → error
-	if (current->type != WORD && current->type != PIPE)
-    	return (redir_err(), 1); // Last token is REDIRECTION → error
+		return (pipe_err(), 1);
+	else if (current->type != WORD && current->type != PIPE)
+		return (redir_err(), 1);
 	return (0);
 }
 
 int	syntax_check(t_token *tokens)
 {
 	t_token	*current;
-	t_token *next_current;
+	t_token	*next_current;
 
 	current = tokens;
-	if (current->type == PIPE) // First token is PIPE → error
-		return (pipe_err(),	1);
+	if (current->type == PIPE)
+		return (pipe_err(), 1);
 	while (current->next != NULL)
 	{
 		if (current->type == PIPE)
 		{
 			next_current = current->next;
 			if (next_current->type == PIPE || next_current->type != WORD)
-				return (pipe_err(),	1); // PIPE followed by a PIPE or REDIRECTION
+				return (pipe_err(), 1);
 		}
 		else if (current->type != PIPE && current->type != WORD)
 		{
 			next_current = current->next;
 			if (next_current->type == PIPE || next_current->type != WORD)
-				return (redir_err(), 1); // REDIRECTION not followed by a word
+				return (redir_err(), 1);
 		}
 		current = current->next;
 	}
-	if(last_token_check(current))
+	if (last_token_check(current))
 		return (1);
 	return (0);
 }

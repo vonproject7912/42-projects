@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/21 16:27:01 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 12:54:18 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_token
 
 typedef struct s_redir
 {
-	t_type			type;
-	char			*file;
+	t_type			type; //
+	char			*file; //
 	s_redir			*next;
 }					t_redir;
 
@@ -93,6 +93,8 @@ int					syntax_check(t_token *tokens);
 // parsing utils
 
 // parsing free utils
+
+// redirections
 
 // actual parsing
 

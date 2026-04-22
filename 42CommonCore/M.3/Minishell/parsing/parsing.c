@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 13:39:48 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:25:14 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	add_str(t_token **tokens, t_cmd *command)
 	return (0);
 }
 
-int	cmd_fill(int *lst_ext, t_token **tokens, t_cmd *command)
+int	cmd_fill(t_token **tokens, t_cmd *command)
 {
 	int	i;
 
@@ -70,7 +70,7 @@ t_cmd	*append_cmd(int *lst_ext, t_token **tokens, t_cmd *commands)
 		current_cmd = new_cmd();
 		if (!current_cmd)
 			return (malloc_err(lst_ext), free_commands(&commands), NULL);
-		if (cmd_fill(lst_ext, tokens, current_cmd))
+		if (cmd_fill(tokens, current_cmd))
 			return (malloc_err(lst_ext), free_commands(&current_cmd),
 				free_commands(&commands), NULL);
 		if ((*tokens) && (*tokens)->type == PIPE)

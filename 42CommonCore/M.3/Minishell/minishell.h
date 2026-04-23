@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 17:27:34 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/23 09:04:38 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_redir
 typedef struct s_cmd
 {
 	char			**argv;
+	int				*quotes;
 	t_redir			*redirs;
 	struct s_cmd	*next;
 }					t_cmd;
@@ -70,8 +71,6 @@ void				token_routine(int *i, int *adj, char *str,
 						t_token **my_tokens);
 
 // actual lexer
-void				token_routine(int *i, int *adj, char *str,
-						t_token **my_tokens);
 void				handle_single_quote(int *i, int *adj, char *str,
 						t_token **my_tokens);
 void				handle_double_quote(int *i, int *adj, char *str,

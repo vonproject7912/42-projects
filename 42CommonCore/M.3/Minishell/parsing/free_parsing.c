@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:09:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/22 13:43:50 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/23 09:10:17 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	free_commands(t_cmd **commands)
 			i++;
 		}
 		free((*commands)->argv);
+		free((*commands)->quotes);
 		if ((*commands)->redirs)
 			free_redir(commands);
 		free(*commands);

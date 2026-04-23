@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 17:36:25 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/23 08:11:45 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/23 09:09:19 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,5 @@ expand_str(char *str, int quote, char **env, int last_exit)
 // — walks every command, calls expanders on each argv[i] and redir->file
 int expand_cmd(t_cmd *commands, char **env, int last_exit) 
 {
-    int i;
-    t_cmd *current;
-
-    i = 0;
-    current = commands;
-    while (current)
-    {
-        while(current->argv[i])
-            expand_str(current->argv[i], )
-    }
+    
 }

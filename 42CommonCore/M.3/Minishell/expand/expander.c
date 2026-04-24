@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 17:36:25 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/24 12:28:56 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/24 17:09:22 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,29 @@ char *get_env_value(char *key, char **env)
 }
 
 // — finds $VAR or $?, looks up value, returns expanded string
-char *expand_var(char *str, char **env, int *last_exit)
+char *expand_var(int *i, char *str, char **env, int *last_exit)
 {
-	int i;
 	int len;
 	char *key;
     char *value;
 
-	i = 0;
-	while (str[i])
+	while (str[(*i)])
 	{
-		if (str[i] == '$')
+		if (str[(*i)] == '$')
 		{
-			i++;
-			if (str[i] == '?')
+			(*i)++;
+			if (str[(*i)] == '?')
 				return (ft_itoa(*last_exit)); // should code itoa
-			len = i;
+			len = (*i);
 			while (str[len] && ft_isalnum(str[len])) // should code isalnum
 				len++;
-			key = ft_strndup(str + i, (len - i));
+			key = ft_strndup(str + (*i), (len - (*i)));
 			value = ft_strdup(get_env_value(key, env));
 			free(key);
+			(*i) = len;
 			return (value);
 		}
-		i++;
+		(*i)++;
 	}
 	return (NULL);
 }
@@ -58,10 +57,24 @@ int	expand_str(char **str, int quote, char **env, int *last_exit)
 	i = 0;
     if (quote == 1)
 		return (0);
+	value = NULL;
 	result = NULL;
 	while ((*str)[i])
 	{
-		
+		len = i;
+		while ((*str)[len] && (*str)[len] != '$')
+			len++;
+		result = ft_strjoin(resulat, ft_strndup((*str) + i, (len - 1)));
+		if (!result)
+			return(1);
+		i = len;
+		if ((*str)[i] && (*str)[i] == '$')
+		{
+			value = expand_var(&i, (*str), env, last_exit);
+			result = ft_strjoin(result, value);
+			if (!result)
+				return(1);
+		}
 	}
 	free(*str);
 	*str = result;

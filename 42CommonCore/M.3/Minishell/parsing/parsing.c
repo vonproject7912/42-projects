@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/23 09:10:44 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/24 07:05:05 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_cmd	*parse(int *lst_ext, t_token **tokens)
 	commands = append_cmd(lst_ext, tokens, commands);
 	if (*lst_ext == 1)
 		return (free_tokens(tokens), free_commands(&commands), NULL);
+	// expand + check for any malloc err 
 	free_tokens(tokens);
 	return (commands);
 }

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/23 09:04:38 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/24 07:02:42 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_redir
 {
 	t_type			type;
 	char			*file;
+	int				quote;
 	struct s_redir	*next;
 }					t_redir;
 

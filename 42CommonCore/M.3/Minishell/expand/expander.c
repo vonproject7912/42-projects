@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 17:36:25 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/23 13:13:46 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/24 07:10:20 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ expand_var(char *str, char **env, int last_exit)
 }
 
 // — expands a single string based on quote type, returns new string
-int expand_str(char *str, int quote, char **env)
+int	expand_str(char *str, int quote, char **env)
 {
     
 }
 
 // — walks every command, calls expanders on each argv[i] and redir->file
-int expand_cmd(t_cmd *commands, char **env, int last_exit) 
+int	expand_cmd(t_cmd *commands, char **env, int last_exit)
 {
-    t_cmd *current;
+	t_cmd	*current;
 
-    current = commands;
-    while (current)
-    {
-        if (expand_str(current->argv, current->quotes, env))
-            return (malloc_err(last_exit), 1);
-        else if (expand_str(current->redir->file, current->quotes, env))
-            return (malloc_err(last_exit), 1);
-        current  = current->next;
-    }
-    return (0);
+	current = commands;
+	while (current)
+	{
+		if (expand_str(current->argv, current->quotes, env))
+			return (malloc_err(last_exit), 1);
+		else if (expand_str(current->redir->file, current->quotes, env))
+			return (malloc_err(last_exit), 1);
+		current = current->next;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 17:36:25 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/24 17:09:22 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/25 14:53:52 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	expand_str(char **str, int quote, char **env, int *last_exit)
 		len = i;
 		while ((*str)[len] && (*str)[len] != '$')
 			len++;
-		result = ft_strjoin(resulat, ft_strndup((*str) + i, (len - 1)));
+		result = ft_strjoin(result, ft_strndup((*str) + i, (len - i)));
 		if (!result)
 			return(1);
 		i = len;
@@ -96,14 +96,14 @@ int	expand_cmd(t_cmd *commands, char **env, int *last_exit)
 		i = 0;
 		while (current->argv[i])
 		{
-			if (expand_str(current->argv[i], current->quotes[i], env))
+			if (expand_str(&current->argv[i], current->quotes[i], env, last_exit))
 				return (malloc_err(last_exit), 1);
 			i++;
 		}
 		current_redir = current->redirs;
 		while (current_redir)
 		{
-			if (expand_str(current_redir->file, current_redir->quote, env))
+			if (expand_str(&current_redir->file, current_redir->quote, env, last_exit))
 				return (malloc_err(last_exit), 1);
 			current_redir = current_redir->next;
 		}

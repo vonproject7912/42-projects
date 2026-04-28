@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 12:51:29 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/24 07:12:12 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/22 13:47:23 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_redir	*new_redir(void)
 	if (!redir)
 		return (NULL);
 	redir->file = NULL;
+	redir->quote = 0;
+	redir->heredoc_fd = -1;
 	redir->next = NULL;
 	return (redir);
 }
@@ -55,8 +57,8 @@ int	append_redir(t_token **tokens, t_cmd *command)
 	else if ((*tokens)->type == HEREDOC)
 		current_redir->type = HEREDOC;
 	(*tokens) = (*tokens)->next;
-	current_redir->file = ft_strdup((*tokens)->value);
 	current_redir->quote = (*tokens)->quote;
+	current_redir->file = ft_strdup((*tokens)->value);
 	add_redir(&command->redirs, current_redir);
 	(*tokens) = (*tokens)->next;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:09:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/24 07:12:30 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/23 09:10:17 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	free_redir(t_cmd **commands)
 	while ((*commands)->redirs)
 	{
 		current_redir = (*commands)->redirs->next;
+		if ((*commands)->redirs->heredoc_fd >= 0)
+			close((*commands)->redirs->heredoc_fd);
 		free((*commands)->redirs->file);
 		free((*commands)->redirs);
 		(*commands)->redirs = current_redir;
@@ -51,7 +53,7 @@ void	free_commands(t_cmd **commands)
 	{
 		i = 0;
 		current = (*commands)->next;
-		while ((*commands)->argv[i])
+		while ((*commands)->argv && (*commands)->argv[i])
 		{
 			free((*commands)->argv[i]);
 			i++;

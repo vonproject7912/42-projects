@@ -1,6 +1,4 @@
-// mets ton header bro
-
-#include "minishell.h"
+#include "../minishell.h"
 
 static int	argv_count(char **argv)
 {

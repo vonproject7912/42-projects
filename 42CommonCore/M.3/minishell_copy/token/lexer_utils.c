@@ -6,12 +6,13 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:07:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 11:53:15 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 15:30:00 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// function that check if all the quotes are closed
 int	quotes_checking(char *str)
 {
 	int	i;
@@ -40,6 +41,7 @@ int	quotes_checking(char *str)
 	return (0);
 }
 
+// identify wheter there are some operators
 int	is_operator(char c)
 {
 	if ((c == '|') || (c == '<') || (c == '>'))
@@ -47,6 +49,8 @@ int	is_operator(char c)
 	return (0);
 }
 
+// assigned the token value for each operators instead of just NULL
+// but I'm unsure if this function trully is necessary but it's more for safety
 void	value_assign(int *i, char *str, t_token *token)
 {
 	if (str[*i] == '|')

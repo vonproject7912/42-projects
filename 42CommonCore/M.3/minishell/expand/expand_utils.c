@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:22:46 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 18:09:32 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 20:12:02 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,20 @@ char	*append_part(char *result, char *part)
 	free(result);
 	free(part);
 	return (new_result);
+}
+
+char	*get_env_value(char *key, char **env)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(key);
+	while (env && env[i])
+	{
+		if (!ft_strncmp(env[i], key, len) && env[i][len] == '=')
+			return (env[i] + len + 1);
+		i++;
+	}
+	return ("");
 }

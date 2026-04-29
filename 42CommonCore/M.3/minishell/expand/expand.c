@@ -6,27 +6,11 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:22:09 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 18:08:57 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 20:11:53 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*get_env_value(char *key, char **env)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(key);
-	while (env && env[i])
-	{
-		if (!ft_strncmp(env[i], key, len) && env[i][len] == '=')
-			return (env[i] + len + 1);
-		i++;
-	}
-	return ("");
-}
 
 char	*expand_var(int *i, char *str, char **env, t_shell *shell)
 {
@@ -53,15 +37,34 @@ char	*expand_var(int *i, char *str, char **env, t_shell *shell)
 	return (value);
 }
 
+static int	process_segment(char **result, char **str, int *i, char **env,
+		t_shell *shell)
+{
+	int		start;
+	char	*value;
+
+	start = *i;
+	while ((*str)[*i] && (*str)[*i] != '$')
+		(*i)++;
+	*result = append_part(*result, ft_strndup(*str + start, *i - start));
+	if (!*result)
+		return (1);
+	if ((*str)[*i] == '$')
+	{
+		value = expand_var(i, *str, env, shell);
+		*result = append_part(*result, value);
+		if (!*result)
+			return (1);
+	}
+	return (0);
+}
+
 int	expand_str(char **str, int quote, char **env, t_shell *shell)
 {
 	int		i;
-	int		start;
-	char	*value;
 	char	*result;
 
 	i = 0;
-	value = NULL;
 	result = NULL;
 	if (!str || !*str || quote == 1)
 		return (0);
@@ -69,22 +72,23 @@ int	expand_str(char **str, int quote, char **env, t_shell *shell)
 		return (0);
 	while ((*str)[i])
 	{
-		start = i;
-		while ((*str)[i] && (*str)[i] != '$')
-			i++;
-		result = append_part(result, ft_strndup((*str) + start, i - start));
-		if (!result)
+		if (process_segment(&result, str, &i, env, shell))
 			return (1);
-		if ((*str)[i] == '$')
-		{
-			value = expand_var(&i, *str, env, shell);
-			result = append_part(result, value);
-			if (!result)
-				return (1);
-		}
 	}
 	free(*str);
 	*str = result;
+	return (0);
+}
+
+static int	expand_redir(t_redir *redir, char **env, t_shell *shell)
+{
+	while (redir)
+	{
+		if (redir->type != HEREDOC && expand_str(&redir->file, redir->quote,
+				env, shell))
+			return (1);
+		redir = redir->next;
+	}
 	return (0);
 }
 
@@ -92,7 +96,6 @@ int	expand_cmd(t_cmd *commands, char **env, t_shell *shell)
 {
 	int		i;
 	t_cmd	*current;
-	t_redir	*current_redir;
 
 	current = commands;
 	while (current)
@@ -100,20 +103,12 @@ int	expand_cmd(t_cmd *commands, char **env, t_shell *shell)
 		i = 0;
 		while (current->argv && current->argv[i])
 		{
-			if (expand_str(&current->argv[i], current->quotes[i], env,
-					shell))
+			if (expand_str(&current->argv[i], current->quotes[i], env, shell))
 				return (malloc_err(shell), 1);
 			i++;
 		}
-		current_redir = current->redirs;
-		while (current_redir)
-		{
-			if (current_redir->type != HEREDOC
-				&& expand_str(&current_redir->file, current_redir->quote, env,
-					shell))
-				return (malloc_err(shell), 1);
-			current_redir = current_redir->next;
-		}
+		if (expand_redir(current->redirs, env, shell))
+			return (malloc_err(shell), 1);
 		current = current->next;
 	}
 	return (0);

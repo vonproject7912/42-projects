@@ -31,7 +31,8 @@ SRCS        =   token/lexer_utils.c \
                 builtins/ft_unset.c \
                 builtins/ft_env.c \
                 builtins/ft_exit.c \
-                utils.c
+                utils_one.c \
+                utils_two.c
 
 LDFLAGS     = -lreadline
 

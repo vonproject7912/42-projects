@@ -6,11 +6,27 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:22:09 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 13:50:29 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 17:11:03 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*get_env_value(char *key, char **env)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(key);
+	while (env && env[i])
+	{
+		if (!ft_strncmp(env[i], key, len) && env[i][len] == '=')
+			return (env[i] + len + 1);
+		i++;
+	}
+	return ("");
+}
 
 char	*expand_var(int *i, char *str, char **env, t_shell *shell)
 {

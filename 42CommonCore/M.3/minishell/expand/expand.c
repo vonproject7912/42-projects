@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:22:09 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 17:16:25 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 18:08:57 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*expand_var(int *i, char *str, char **env, t_shell *shell)
 	return (value);
 }
 
-int	expand_str(char **str, int quote, char **env, int *last_exit)
+int	expand_str(char **str, int quote, char **env, t_shell *shell)
 {
 	int		i;
 	int		start;
@@ -77,7 +77,7 @@ int	expand_str(char **str, int quote, char **env, int *last_exit)
 			return (1);
 		if ((*str)[i] == '$')
 		{
-			value = expand_var(&i, *str, env, last_exit);
+			value = expand_var(&i, *str, env, shell);
 			result = append_part(result, value);
 			if (!result)
 				return (1);
@@ -88,7 +88,7 @@ int	expand_str(char **str, int quote, char **env, int *last_exit)
 	return (0);
 }
 
-int	expand_cmd(t_cmd *commands, char **env, int *last_exit)
+int	expand_cmd(t_cmd *commands, char **env, t_shell *shell)
 {
 	int		i;
 	t_cmd	*current;
@@ -101,8 +101,8 @@ int	expand_cmd(t_cmd *commands, char **env, int *last_exit)
 		while (current->argv && current->argv[i])
 		{
 			if (expand_str(&current->argv[i], current->quotes[i], env,
-					last_exit))
-				return (malloc_err(last_exit), 1);
+					shell))
+				return (malloc_err(shell), 1);
 			i++;
 		}
 		current_redir = current->redirs;
@@ -110,8 +110,8 @@ int	expand_cmd(t_cmd *commands, char **env, int *last_exit)
 		{
 			if (current_redir->type != HEREDOC
 				&& expand_str(&current_redir->file, current_redir->quote, env,
-					last_exit))
-				return (malloc_err(last_exit), 1);
+					shell))
+				return (malloc_err(shell), 1);
 			current_redir = current_redir->next;
 		}
 		current = current->next;

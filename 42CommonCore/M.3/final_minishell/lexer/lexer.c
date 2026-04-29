@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:08:31 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/28 16:45:22 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 11:52:25 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,7 @@ t_token	*lexer(t_shell *shell, char *str)
 	if (quotes_checking(str))
 	{
 		ft_putstr(2, "minishell: syntax error: unclosed quote\n");
-		if (last_exit)
-			shell->last_exit = 2;
+		shell->last_exit = 2;
 		return (NULL);
 	}
 	while (str[i] == ' ' || str[i] == '\t')

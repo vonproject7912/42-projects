@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 16:15:18 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 18:06:12 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,40 +141,39 @@ char							*get_env_value(char *key, char **env);
 char							*expand_var(int *i, char *str, char **env,
 									t_shell *shell);
 int								expand_str(char **str, int quote, char **env,
-									int *last_exit);
+									t_shell *shell);
 int								expand_cmd(t_cmd *commands, char **env,
-									int *last_exit);
-
+									t_shell *shell);
 
 // shell loop
-int					shell_loop(char **envp);
+int								shell_loop(char **envp);
 
 // env
-char				**env_dup(char **envp);
-void				free_env(char **envp);
-char				*env_get(char **envp, char *key);
-int					env_set(t_shell *shell, char *entry);
-int					env_unset(t_shell *shell, char *key);
+char							**env_dup(char **envp);
+void							free_env(char **envp);
+char							*env_get(char **envp, char *key);
+int								env_set(t_shell *shell, char *entry);
+int								env_unset(t_shell *shell, char *key);
 
 // builtins
-int					is_builtin(char *cmd);
-int					is_parent_builtin(char *cmd);
-int					run_builtin(t_shell *shell, t_cmd *cmd);
-int					ft_echo(t_cmd *cmd);
-int					ft_cd(t_shell *shell, t_cmd *cmd);
-int					ft_pwd(void);
-int					ft_export(t_shell *shell, t_cmd *cmd);
-int					ft_unset(t_shell *shell, t_cmd *cmd);
-int					ft_env(t_shell *shell, t_cmd *cmd);
-int					ft_exit(t_shell *shell, t_cmd *cmd);
+int								is_builtin(char *cmd);
+int								is_parent_builtin(char *cmd);
+int								run_builtin(t_shell *shell, t_cmd *cmd);
+int								ft_echo(t_cmd *cmd);
+int								ft_cd(t_shell *shell, t_cmd *cmd);
+int								ft_pwd(void);
+int								ft_export(t_shell *shell, t_cmd *cmd);
+int								ft_unset(t_shell *shell, t_cmd *cmd);
+int								ft_env(t_shell *shell, t_cmd *cmd);
+int								ft_exit(t_shell *shell, t_cmd *cmd);
 
 // exec
-int					run_commands(t_cmd *commands, t_shell *shell);
-int					open_heredoc(char *delimiter);
+int								run_commands(t_cmd *commands, t_shell *shell);
+int								open_heredoc(char *delimiter);
 
 // signals
-void				setup_prompt_signals(void);
-void				setup_parent_exec_signals(void);
-void				setup_child_exec_signals(void);
+void							setup_prompt_signals(void);
+void							setup_parent_exec_signals(void);
+void							setup_child_exec_signals(void);
 
 #endif

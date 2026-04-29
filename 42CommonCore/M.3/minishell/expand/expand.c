@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:22:09 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 20:11:53 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 20:29:06 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,10 @@ char	*expand_var(int *i, char *str, char **env, t_shell *shell)
 	return (value);
 }
 
-static int	process_segment(char **result, char **str, int *i, char **env,
-		t_shell *shell)
-{
-	int		start;
-	char	*value;
-
-	start = *i;
-	while ((*str)[*i] && (*str)[*i] != '$')
-		(*i)++;
-	*result = append_part(*result, ft_strndup(*str + start, *i - start));
-	if (!*result)
-		return (1);
-	if ((*str)[*i] == '$')
-	{
-		value = expand_var(i, *str, env, shell);
-		*result = append_part(*result, value);
-		if (!*result)
-			return (1);
-	}
-	return (0);
-}
-
 int	expand_str(char **str, int quote, char **env, t_shell *shell)
 {
 	int		i;
+	int		start;
 	char	*result;
 
 	i = 0;
@@ -72,7 +51,13 @@ int	expand_str(char **str, int quote, char **env, t_shell *shell)
 		return (0);
 	while ((*str)[i])
 	{
-		if (process_segment(&result, str, &i, env, shell))
+		start = i;
+		while ((*str)[i] && (*str)[i] != '$')
+			i++;
+		result = append_part(result, ft_strndup((*str) + start, i - start));
+		if ((*str)[i] == '$')
+			result = append_part(result, expand_var(&i, *str, env, shell));
+		if (!result)
 			return (1);
 	}
 	free(*str);

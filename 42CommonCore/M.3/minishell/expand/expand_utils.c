@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:22:46 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 13:47:57 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/04/29 14:07:40 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,4 @@ char	*append_part(char *result, char *part)
 	free(result);
 	free(part);
 	return (new_result);
-}
-
-char	*ft_itoa(int n)
-{
-	int		i;
-	long	nbr;
-	int		sign;
-	char	buffer[12];
-
-	i = 11;
-	nbr = n;
-	sign = 1;
-	buffer[i--] = '\0';
-	if (nbr == 0)
-		buffer[i--] = '0';
-	if (nbr < 0)
-	{
-		sign = -1;
-		nbr = -nbr;
-	}
-	while (nbr > 0)
-	{
-		buffer[i--] = (nbr % 10) + '0';
-		nbr /= 10;
-	}
-	if (sign < 0)
-		buffer[i--] = '-';
-	return (ft_strdup(&buffer[i + 1]));
 }

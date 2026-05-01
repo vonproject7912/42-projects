@@ -18,21 +18,26 @@ SRCS        =   token/lexer_utils.c \
                 parsing/syntax_check.c \
                 expand/expand.c \
                 expand/expand_utils.c \
-                exec/main.c \
-                exec/shell_loop.c \
-                exec/command.c \
+                exec/exec_one.c \
+                exec/exec_two.c \
+                exec/exec_three.c \
                 exec/heredoc.c \
                 exec/signals.c \
                 exec/env.c \
+                exec/env_utils.c \
                 builtins/ft_echo.c \
                 builtins/ft_cd.c \
                 builtins/ft_pwd.c \
+                builtins/ft_export_utils.c \
                 builtins/ft_export.c \
                 builtins/ft_unset.c \
                 builtins/ft_env.c \
                 builtins/ft_exit.c \
+                shell_utils.c \
+                shell_loop.c \
                 utils_one.c \
-                utils_two.c
+                utils_two.c \
+                main.c
 
 LDFLAGS     = -lreadline
 

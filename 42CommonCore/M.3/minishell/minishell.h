@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:16:10 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 18:06:12 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/01 09:53:55 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,16 @@ int								expand_cmd(t_cmd *commands, char **env,
 									t_shell *shell);
 
 // shell loop
+int								ms_is_blank(char *line);
+int								ms_read_line(char **line);
 int								shell_loop(char **envp);
+
+// env utils
+int								env_count(char **envp);
+int								key_len(char *entry);
+int								env_key_match(char *entry, char *key, int len);
+int								env_append(t_shell *shell, char *entry,
+									int count);
 
 // env
 char							**env_dup(char **envp);
@@ -162,12 +171,30 @@ int								run_builtin(t_shell *shell, t_cmd *cmd);
 int								ft_echo(t_cmd *cmd);
 int								ft_cd(t_shell *shell, t_cmd *cmd);
 int								ft_pwd(void);
+int								is_valid_identifier(char *str);
+void							print_export(char **envp);
 int								ft_export(t_shell *shell, t_cmd *cmd);
 int								ft_unset(t_shell *shell, t_cmd *cmd);
 int								ft_env(t_shell *shell, t_cmd *cmd);
 int								ft_exit(t_shell *shell, t_cmd *cmd);
 
-// exec
+// exec one
+int								is_builtin(char *cmd);
+int								is_parent_builtin(char *cmd);
+int								run_builtin(t_shell *shell, t_cmd *cmd);
+char							*join_path(char *dir, char *cmd);
+char							*next_path_dir(char **path);
+
+// exec two
+char							*find_command_path(t_shell *shell, char *cmd);
+int								apply_redirs(t_redir *redir);
+int								prepare_heredocs(t_cmd *commands);
+void							exec_child(t_cmd *cmd, t_shell *shell);
+
+// exec three
+int								run_parent_builtin(t_cmd *cmd, t_shell *shell);
+int								spawn_cmd(t_cmd *cmd, t_shell *shell, int in_fd,
+									int pipe_fd[2]);
 int								run_commands(t_cmd *commands, t_shell *shell);
 int								open_heredoc(char *delimiter);
 

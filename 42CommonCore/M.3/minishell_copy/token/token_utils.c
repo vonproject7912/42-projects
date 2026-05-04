@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:08:44 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/04 08:09:07 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/04 08:22:17 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	merge_last_token(t_token *my_tokens, char *new_str)
 	if (!old_value)
 	{
 		last_token->value = new_str;
-		free (new_str);
+		free (new_str); // don't forget to free
 	}
 	else
 	{

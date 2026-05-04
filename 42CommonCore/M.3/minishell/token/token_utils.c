@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:08:44 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/29 11:53:33 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:55:44 by mosriji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void	merge_last_token(t_token *my_tokens, char *new_str)
 	last_token = get_last_token(my_tokens);
 	old_value = last_token->value;
 	if (!old_value)
+	{
 		last_token->value = new_str;
+		free (new_str);
+	}
 	else
 	{
 		last_token->value = ft_strjoin(old_value, new_str);

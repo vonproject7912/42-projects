@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 09:52:22 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/01 15:33:23 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/06 10:13:02 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	env_count_local(char **envp)
 // we only copy the pointers (the addresses) NOT the actual strings
 static char	**copy_env_ptrs(char **envp)
 {
-	char	**copy;
 	int		i;
+	char	**copy;
 
 	copy = malloc(sizeof(char *) * (env_count_local(envp) + 1));
 	if (!copy)

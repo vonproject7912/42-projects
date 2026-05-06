@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 08:12:52 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/01 12:28:35 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/06 10:25:13 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ms_parse_and_expand(char *line, t_shell *shell, t_cmd **commands)
 	*commands = parse(shell, &tokens);
 	if (!*commands) // small check
 		return (1);
-	expand each commands
+	// expand each commands
 	if (expand_cmd(*commands, shell->envp, shell))
 	{
 		// if it failed (usually malloc fail here)

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/04 08:21:33 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/06 11:02:34 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,6 @@ t_cmd	*parse(t_shell *shell, t_token **tokens)
 	}
 	// build my command linked list and give my tmp variable
 	commands = append_cmd(shell, &tmp, commands);
-	// check for any malloc fail
-	if (shell->last_exit == 1) // if there are any free my tokens and commands
-		return (free_tokens(tokens), free_commands(&commands), NULL);
 	// free my tokens after commands were build
 	free_tokens(tokens); // free my actual tokens
 	return (commands);

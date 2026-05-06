@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:07:45 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/04 19:14:01 by mnazeer          ###   ########.fr       */
+/*   Updated: 2026/05/06 10:38:39 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	run_parent_builtin(t_cmd *cmd, t_shell *shell)
 {
+	int	status;
 	int	stdin_save;
 	int	stdout_save;
-	int	status;
 
 	stdin_save = dup(STDIN_FILENO);
 	stdout_save = dup(STDOUT_FILENO);
@@ -86,8 +86,8 @@ static int	run_pipeline(t_cmd *commands, t_shell *shell, pid_t *last_pid)
 
 static void	wait_pipeline(t_shell *shell, pid_t last_pid)
 {
-	pid_t	wait_pid;
 	int		status;
+	pid_t	wait_pid;
 
 	while (1)
 	{
@@ -109,8 +109,8 @@ static void	wait_pipeline(t_shell *shell, pid_t last_pid)
 
 int	run_commands(t_cmd *commands, t_shell *shell)
 {
-	pid_t	last_pid;
 	int		status;
+	pid_t	last_pid;
 
 	if (commands && !commands->next && commands->argv && commands->argv[0]
 		&& is_parent_builtin(commands->argv[0]))

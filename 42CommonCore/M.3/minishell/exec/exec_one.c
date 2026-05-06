@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_one.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:07:41 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/04 19:13:58 by mnazeer          ###   ########.fr       */
+/*   Updated: 2026/05/06 10:38:16 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ char	*join_path(char *dir, char *cmd)
 
 char	*next_path_dir(char **path)
 {
-	char	*start;
-	char	*dir;
 	int		len;
+	char	*dir;
+	char	*start;
 
 	start = *path;
 	len = 0;

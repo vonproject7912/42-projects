@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:07:34 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/04 19:13:37 by mnazeer          ###   ########.fr       */
+/*   Updated: 2026/05/06 10:36:29 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	**env_dup(char **envp)
 {
-	char	**copy;
 	int		i;
+	char	**copy;
 
 	copy = malloc(sizeof(char *) * (env_count(envp) + 1));
 	if (!copy)

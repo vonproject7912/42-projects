@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:07:52 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/04 19:14:06 by mnazeer          ###   ########.fr       */
+/*   Updated: 2026/05/06 10:39:03 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	heredoc_child(char *delimiter, int pipe_fd[2])
 
 int	open_heredoc(char *delimiter)
 {
-	int		pipe_fd[2];
-	int		status;
 	pid_t	pid;
+	int		status;
+	int		pipe_fd[2];
 
 	if (pipe(pipe_fd) < 0)
 		return (perror("minishell: pipe"), -1);

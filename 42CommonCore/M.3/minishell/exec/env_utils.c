@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:07:38 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/04 19:13:51 by mnazeer          ###   ########.fr       */
+/*   Updated: 2026/05/06 10:35:11 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	env_key_match(char *entry, char *key, int len)
 
 int	env_append(t_shell *shell, char *entry, int count)
 {
-	char	**new_env;
 	int		i;
+	char	**new_env;
 
 	new_env = malloc(sizeof(char *) * (count + 2));
 	if (!new_env)

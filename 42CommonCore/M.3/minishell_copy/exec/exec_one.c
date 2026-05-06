@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 09:15:14 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/01 15:43:54 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/06 10:40:49 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ char	*join_path(char *dir, char *cmd)
 // a PATH variable looks like: "/usr/bin:/bin:/usr/sbin"
 char	*next_path_dir(char **path)
 {
-	char	*start;
-	char	*dir;
 	int		len;
+	char	*dir;
+	char	*start;
 
 	len = 0;
 	start = *path; // save current position

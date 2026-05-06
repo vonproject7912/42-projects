@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/01 09:52:22 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/01 09:53:14 by vonpr            ###   ########.fr       */
+/*   Created: 2026/05/04 18:51:18 by mnazeer           #+#    #+#             */
+/*   Updated: 2026/05/06 10:13:00 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int	env_count_local(char **envp)
 
 static char	**copy_env_ptrs(char **envp)
 {
-	char	**copy;
 	int		i;
+	char	**copy;
 
 	copy = malloc(sizeof(char *) * (env_count_local(envp) + 1));
 	if (!copy)

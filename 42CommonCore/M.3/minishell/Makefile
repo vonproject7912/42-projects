@@ -62,6 +62,6 @@ fclean: clean
 	@$(RM) $(NAME)
 	@echo "$(R)Binary removed.$(W)"
 
-re: fclean all
+re: fclean all 
 
 .PHONY: all clean fclean re

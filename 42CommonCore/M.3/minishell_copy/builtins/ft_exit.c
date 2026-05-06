@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 09:50:36 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/01 13:39:45 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/05/06 10:19:26 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,3 +86,4 @@ int	ft_exit(t_shell *shell, t_cmd *cmd)
 	shell->should_exit = 1;
 	return (shell->last_exit);
 }
+ 

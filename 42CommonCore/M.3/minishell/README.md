@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by [mosriji].*
+*This project has been created as part of the 42 curriculum by <mnazeer>[, <mosriji>].*
 
 # 🐚 minishell
 
@@ -36,17 +36,12 @@ On Ubuntu/Debian:
 sudo apt-get install libreadline-dev
 ```
 
-On macOS (with Homebrew):
-```bash
-brew install readline
-```
-
 ### Compilation
 
 Clone the repository and compile the project:
 
 ```bash
-git clone https://github.com/mosriji/minishell.git
+git clone https://github.com/mohebnazeer/minishell.git
 cd minishell
 make
 ```
@@ -59,7 +54,7 @@ This will produce a `minishell` executable in the project directory.
 ./minishell
 ```
 
-You will be greeted with a prompt. Type commands just like in bash:
+A prompt will appear. Type commands just like in bash:
 
 ```bash
 minishell$ echo "Hello, World!"
@@ -103,12 +98,4 @@ make re       # Recompile from scratch
 - [Unix Signals — signal(7) man page](https://man7.org/linux/man-pages/man7/signal.7.html)
 
 ### AI Usage
-
-AI (Claude by Anthropic) was used during this project for the following purposes:
-
-- **Debugging**: Helping identify memory leaks and undefined behaviors in parsing and execution logic.
-- **Understanding concepts**: Clarifying how heredocs work internally, signal handling edge cases, and the behavior of `dup2` with file descriptors.
-- **Code review**: Reviewing specific functions (e.g., the tokenizer and expander) for logic errors and potential edge cases.
-- **Documentation**: Assisting with writing inline comments and this README.
-
-AI was **not** used to generate core algorithmic solutions or write entire modules. All design decisions and implementations were made by the project authors.
+AI was used during this project for debugging (memory leaks etc..), understanding concepts and code review.

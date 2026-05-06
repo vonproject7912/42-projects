@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 11:19:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/05/01 20:05:45 by mosriji          ###   ########.fr       */
+/*   Created: 2026/05/04 16:27:57 by mosriji           #+#    #+#             */
+/*   Updated: 2026/05/04 18:53:42 by mnazeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_cmd	*append_cmd(t_shell *shell, t_token **tokens, t_cmd *commands)
 
 t_cmd	*parse(t_shell *shell, t_token **tokens)
 {
-	t_token *tmp;
+	t_token	*tmp;
 	t_cmd	*commands;
 
 	commands = NULL;
@@ -101,8 +101,6 @@ t_cmd	*parse(t_shell *shell, t_token **tokens)
 		return (free_tokens(tokens), NULL);
 	}
 	commands = append_cmd(shell, &tmp, commands);
-	if (shell->last_exit == 1)
-		return (free_tokens(tokens), free_commands(&commands), NULL);
 	free_tokens(tokens);
 	return (commands);
 }

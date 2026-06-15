@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   microshell_comment.c                               :+:      :+:    :+:   */
+/*   comment.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 08:40:40 by vonpr             #+#    #+#             */
-/*   Updated: 2026/06/15 12:17:19 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/06/15 13:06:59 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int main(int, char **av, char **envp)
     {
         av += i + 1; // advance past the previous separator / program name
         i = 0;
-        // scan forward to find th eend of the current command segment
+        // scan forward to find the end of the current command segment
         while (av[i] && strcmp(av[i], "|") && strcmp(av[i], ";"))
             i++;
         if (i) // execute the actual commands

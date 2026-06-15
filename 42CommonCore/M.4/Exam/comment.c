@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 08:40:40 by vonpr             #+#    #+#             */
-/*   Updated: 2026/06/15 13:06:59 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/06/15 13:11:01 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int    cd(char **av, int i)
     return 0; // check for errors otherwise return 0
 }
 
-
+// sets the pipe ends
 void    set_pipe(int has_pipe, int *fd, int end)
 {
     // if there is a pipe rewire the end to the right fd + exit on errors

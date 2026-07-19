@@ -1,0 +1,3 @@
+make
+cc ft_printf.a
+./a.out

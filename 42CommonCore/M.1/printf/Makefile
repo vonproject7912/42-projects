@@ -6,12 +6,12 @@
 #    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/30 01:33:46 by vonpr             #+#    #+#              #
-#    Updated: 2026/04/10 15:29:21 by vonpr            ###   ########.fr        #
+#    Updated: 2026/07/19 21:26:49 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = ft_printf.c\
-		ft_print_char.c\ 
+		ft_print_char.c\
 		ft_print_str.c\
 		ft_print_putnbr.c\
 		ft_print_adress.c\
@@ -22,7 +22,7 @@ SRCS = ft_printf.c\
 
 OBJS = $(SRCS:.c=.o)
 
-NAME = libftprintf.a
+NAME = ft_printf.a
 
 CC = cc
 

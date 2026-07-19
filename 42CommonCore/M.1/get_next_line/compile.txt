@@ -1,0 +1,4 @@
+gcc -Wall -Wextra -Werror -D BUFFER_SIZE=10 get_next_line.c get_next_line_utils.c -o gnl
+
+-> The -D flag stands for Define. It allows you to dynamically define a macro directly from your terminal compiler command instead of hardcoding it in your code.
+-> The -o flag stands for Output. It specifies the filename of the final compiled executable binary.

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 19:09:54 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/10 15:56:33 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/03 19:24:35 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	main(int ac, char *av[], char **envp)
 	int		final_exit;
 	t_pipex	*folder;
 
+	folder = NULL;
 	// argument check
 	if (ac != 5)
 		arg_issue(folder);

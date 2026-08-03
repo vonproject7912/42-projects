@@ -1,0 +1,7 @@
+A simple make then a basic pipe command with this format:
+        < input.txt cmd1 | cmd2 > output.txt
+
+such as:
+
+Word Count	./pipex input.txt "cat" "wc -w" output.txt
+Sorting	./pipex input.txt "grep a" "sort -r" output.txt

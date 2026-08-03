@@ -6,7 +6,7 @@
 #    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/08 19:10:07 by vonpr             #+#    #+#              #
-#    Updated: 2026/04/10 15:56:09 by vonpr            ###   ########.fr        #
+#    Updated: 2026/08/03 19:20:34 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror -g
 INCLUDES	=	-I.
    
-SRCS = tools/ft_split.c \
+SRCS = tools/errors.c \
+		tools/ft_split.c \
 		tools/utils.c \
-		tools/error_mess.c \
 		pipex_utils.c \
 		pipex.c
 

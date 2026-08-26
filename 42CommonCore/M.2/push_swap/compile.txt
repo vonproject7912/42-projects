@@ -1,2 +1,2 @@
 Just make then with 
-./pushswap give input
+./pushswap + input

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 03:12:58 by vonpr             #+#    #+#             */
-/*   Updated: 2026/07/19 21:28:56 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/26 07:23:36 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,10 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
-/*
+
 int main(void)
 {
 	ft_printf("print this sentence to test this code out\n");
 	ft_printf("harder test: %d", 7912);
 	return (0);
 }
-*/

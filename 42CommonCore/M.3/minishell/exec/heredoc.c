@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:07:52 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/06 10:39:03 by vonpr            ###   ########.fr       */
+/*   Created: 2026/05/06 10:43:59 by vonpr             #+#    #+#             */
+/*   Updated: 2026/05/06 10:44:00 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	heredoc_child(char *delimiter, int pipe_fd[2])
 
 int	open_heredoc(char *delimiter)
 {
-	pid_t	pid;
-	int		status;
 	int		pipe_fd[2];
+	int		status;
+	pid_t	pid;
 
 	if (pipe(pipe_fd) < 0)
 		return (perror("minishell: pipe"), -1);

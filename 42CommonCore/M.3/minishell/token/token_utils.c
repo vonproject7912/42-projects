@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 16:27:47 by mosriji           #+#    #+#             */
-/*   Updated: 2026/05/04 16:29:19 by mosriji          ###   ########.fr       */
+/*   Created: 2026/04/21 11:08:44 by vonpr             #+#    #+#             */
+/*   Updated: 2026/05/04 08:22:17 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// create a new token / node
 t_token	*new_token(void)
 {
 	t_token	*token;
@@ -25,6 +26,7 @@ t_token	*new_token(void)
 	return (token);
 }
 
+// add the token to the linked list
 void	add_token(t_token **lst, t_token *new)
 {
 	t_token	*current;
@@ -40,6 +42,7 @@ void	add_token(t_token **lst, t_token *new)
 	current->next = new;
 }
 
+// get the last token in the linked list
 t_token	*get_last_token(t_token *lst)
 {
 	t_token	*last_token;
@@ -50,6 +53,8 @@ t_token	*get_last_token(t_token *lst)
 	return (last_token);
 }
 
+// merge the rest of a word in the last token 
+// (ex: "hel"lo we get hello)
 void	merge_last_token(t_token *my_tokens, char *new_str)
 {
 	char	*old_value;
@@ -60,7 +65,7 @@ void	merge_last_token(t_token *my_tokens, char *new_str)
 	if (!old_value)
 	{
 		last_token->value = new_str;
-		free (new_str);
+		free (new_str); // don't forget to free
 	}
 	else
 	{
@@ -70,8 +75,10 @@ void	merge_last_token(t_token *my_tokens, char *new_str)
 	}
 }
 
+// the "Traffic Controller": decides how to handle the current character
 void	token_routine(int *i, int *adj, char *str, t_token **my_tokens)
 {
+	// skip spaces and set adj to 0
 	if (str[*i] == ' ' || str[*i] == '\t')
 	{
 		*adj = 0;

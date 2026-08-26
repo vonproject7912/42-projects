@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:07:48 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/06 10:39:52 by vonpr            ###   ########.fr       */
+/*   Created: 2026/05/06 10:44:29 by vonpr             #+#    #+#             */
+/*   Updated: 2026/05/06 10:44:30 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*find_command_path(t_shell *shell, char *cmd)
 {
-	char	*dir;
-	char	*cursor;
-	char	*path;
 	char	*path_env;
+	char	*cursor;
+	char	*dir;
+	char	*path;
 
 	if (ft_strchr(cmd, '/'))
 		return (ft_strdup(cmd));
@@ -74,9 +74,9 @@ int	apply_redirs(t_redir *redir)
 
 int	prepare_heredocs(t_cmd *commands)
 {
-	int		fd;
 	t_cmd	*cmd;
 	t_redir	*redir;
+	int		fd;
 
 	cmd = commands;
 	while (cmd)

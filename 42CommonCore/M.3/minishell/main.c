@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnazeer <mnazeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:08:43 by mnazeer           #+#    #+#             */
-/*   Updated: 2026/05/04 19:08:45 by mnazeer          ###   ########.fr       */
+/*   Created: 2026/05/01 08:13:33 by vonpr             #+#    #+#             */
+/*   Updated: 2026/05/01 08:13:33 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// ignore argv argc and starts the loop
 int	main(int argc, char **argv, char **envp)
 {
 	(void)argc;

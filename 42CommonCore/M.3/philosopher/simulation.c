@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 04:14:43 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/10 16:03:42 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/26 07:36:16 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	start_simulation(t_file *folder)
 	folder->simulation_running = 1;
 	pthread_mutex_init(&folder->print_mutex, NULL);
 	pthread_mutex_init(&folder->stop_mutex, NULL);
+	folder->start_time = get_time();
 	while (i < folder->num_philos)
-		folder->start_time = get_time();
-	folder->philosophers[i++].last_meal_time = get_time();
+	    folder->philosophers[i++].last_meal_time = folder->start_time;
 	i = 0;
 	// create the philosopher
 	while (i < folder->num_philos)

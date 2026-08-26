@@ -3,5 +3,5 @@ A simple make then a basic pipe command with this format:
 
 such as:
 
-Word Count	./pipex input.txt "cat" "wc -w" output.txt
+Word Count	./pipex infile.txt "cat" "wc -w" outfile.txt
 Sorting	./pipex input.txt "grep a" "sort -r" output.txt

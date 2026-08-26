@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:54:38 by vonpr             #+#    #+#             */
-/*   Updated: 2026/07/19 20:57:50 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/26 07:22:23 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ char	*get_next_line(int fd)
 	return (final_line);
 }
 
-/*
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -137,4 +136,3 @@ int	main(int argc, char **argv)
 	close(fd);
 	return (0);
 }
-*/

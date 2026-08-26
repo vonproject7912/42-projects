@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 22:33:28 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/10 15:53:08 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/26 08:07:21 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_complex
 /*        UTILS      */
 void		error_mess(char *str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
-static int	get_sign(char *str, int *i); // potential issue ?
+int			get_sign(char *str, int *i); // potential issue ?
 double		atodbl(char *str);
 
 /*        MATH UTILS       */

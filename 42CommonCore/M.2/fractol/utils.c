@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 22:34:30 by vonpr             #+#    #+#             */
-/*   Updated: 2026/04/10 15:53:35 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/26 08:07:48 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 // get the sign
 // we passed the adress of i to overwrite it
-static int	get_sign(char *str, int *i)
+int	get_sign(char *str, int *i)
 {
 	int	signe;
 

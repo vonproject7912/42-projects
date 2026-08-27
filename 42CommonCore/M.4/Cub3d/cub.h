@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:51:08 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/26 09:07:53 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/27 10:15:11 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# include <mlx.h>
+# include "minilibx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+
 # include <math.h>
 # include <fcntl.h>
 
@@ -119,5 +122,8 @@ typedef struct s_game
 	t_texture	textures[4];
 	t_ray		*rays;
 }	t_game;
+
+void ft_putstr_fd(char *str, int fd);
+void	*ft_memset(void *game, int replace, size_t len);
 
 #endif

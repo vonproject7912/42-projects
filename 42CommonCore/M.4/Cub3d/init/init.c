@@ -6,12 +6,13 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/28 09:53:19 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/28 10:33:10 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
+// mlx connection
 int init_mlx(t_game *game)
 {
 	// init the mlx connection to the x server
@@ -41,3 +42,6 @@ int init_mlx(t_game *game)
 	return (0);
 }
 
+// init player
+// init texture
+// init picture

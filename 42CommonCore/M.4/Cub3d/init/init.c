@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/27 10:16:09 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/28 09:53:19 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int init_mlx(t_game *game)
 	game->window = mlx_new_window(game->mlx_connection, WIDTH, HEIGHT, "wtf");
 	if (!game->window) // failed window creation
 	{
-		mlx_destroy_display(game->mlx_connection); // detruire la connection
-		free(game->mlx_connection); // et la free
+		mlx_destroy_display(game->mlx_connection); // unlink 
+		free(game->mlx_connection); // free
 		return (1);
 	}
 	// Screen / image creation
@@ -41,38 +41,3 @@ int init_mlx(t_game *game)
 	return (0);
 }
 
-int init_game(t_game *game, char *map)
-{
-	if (init_mlx(game))
-	{
-		ft_putstr_fd("Mlx creation failed\n", 2);
-		return (1);
-	}
-	// event handling
-	// init player
-	// init texture
-	// init picture
-	return (0);
-}
-
-int main (int ac, char **av)
-{
-	t_game game;
-
-	// if (ac != 2) // argument check
-	// {
-	// 	ft_putstr_fd("Usage: ./cub3D <map.cub>\n", 2);
-    //     return (1);
-	// }
-	// if (!parsing(av[1])) // parse check
-	// {
-	// 		ft_putstr_fd("Error: invalid file extension\n", 2);
-    // 		return (1);
-	// }
-	ft_memset(&game, 0, sizeof(t_game)); // init the game
-	if (init_game(&game, av[1])) // struct
-		return (1);
-	mlx_loop(game.mlx_connection); // loop to keep the window open
-	// render
-	return (0);
-}

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:51:08 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/27 10:15:11 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/28 09:52:57 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ typedef struct s_game
 	t_ray		*rays;
 }	t_game;
 
-void ft_putstr_fd(char *str, int fd);
-void	*ft_memset(void *game, int replace, size_t len);
+...
 
 #endif

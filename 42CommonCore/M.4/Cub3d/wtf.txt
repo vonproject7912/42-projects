@@ -1,1 +1,0 @@
-cc init.c -I minilibx -L minilibx -lmlx -lXext -lX11 -lm

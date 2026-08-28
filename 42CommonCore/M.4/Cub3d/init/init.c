@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/28 10:33:10 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/28 15:26:43 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,14 @@ int init_mlx(t_game *game)
 }
 
 // init player
+int init_player(t_game *game, t_map *map)
+{
+	// convert player's position into floats/double +0,5 to center
+	// Set dir_x and dir_y based of the orientation (eiter N/S/E/W)
+	// init the plane_x and plane_y perp to dir + FOV of 0.66
+	// init the movement and rotation / speed constant
+	// ... need a solid .h
+}
+
 // init texture
 // init picture

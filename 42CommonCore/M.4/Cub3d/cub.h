@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:51:08 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/28 09:54:56 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/28 10:44:51 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@
 # define KEY_RIGHT  124
 # define KEY_ESC    53
 
-// Image
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -51,14 +50,12 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
-// Texture
 typedef struct s_texture
 {
 	t_img	img;
 	char	*path;
 }	t_texture;
 
-// Position
 typedef struct s_player
 {
 	double	pos_x;
@@ -77,7 +74,6 @@ typedef struct s_player
 	int		rotate_right;
 }	t_player;
 
-// Ray
 typedef struct s_ray
 {
 	double	camera_x;

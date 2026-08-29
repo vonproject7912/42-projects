@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 09:47:48 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/27 10:11:05 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/29 04:48:48 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void ft_putstr_fd(char *str, int fd)
 	}
 }
 
-void	*ft_memset(void *game, int replace, size_t len)
+void	*ft_memset(void *par, int replace, size_t len)
 {
 	unsigned char	*ptr;
 
-	ptr = (unsigned char *)game;
+	ptr = (unsigned char *)par;
 	while (len > 0)
 	{
 		*ptr = (unsigned char)replace;

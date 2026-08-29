@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/29 05:48:39 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/29 08:49:40 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,70 @@ int init_mlx(t_game *game)
 	return (0);
 }
 
-void free_game(t_game *game)
+// init player
+int init_player(t_game *game)
 {
-	// free the image before the connection
-	if (game->screen.img_ptr)
-		mlx_destroy_image(game->mlx_connection, game->screen.img_ptr);
-	// free the window
-	if (game->window)
-		mlx_destroy_window(game->mlx_connection, game->window);
-	// free the connection itself
-	if (game->mlx_connection)
-	{
-		mlx_destroy_display(game->mlx_connection);
-		free(game->mlx_connection);
-	}
+	game->player.move_speed = 0.05;
+	game->player.rot_speed = 0.03;
+	game->player.move_up = 0;
+	game->player.move_down = 0;
+	game->player.move_right = 0;
+	game->player.move_left = 0;
+	game->player.rotate_right = 0;
+	game->player.rotate_left = 0;
+	return (0);
 }
 
-// init player
 // init texture
-// init picture
+int init_texture(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		// Convert the xmp file into an image
+		game->textures[i].img.img_ptr = mlx_xpm_file_to_image(
+				game->mlx_connection,
+                game->textures[i].path,
+                &game->textures[i].img.width,
+                &game->textures[i].img.height);
+		if (!game->textures[i].img.img_ptr)
+			return (1);
+		// get the adress to the first pixel
+		game->textures[i].img.addr = mlx_get_data_addr(
+                game->textures[i].img.img_ptr,
+                &game->textures[i].img.bits_per_pixel,
+                &game->textures[i].img.line_length,
+                &game->textures[i].img.endian);
+		i++;
+	}
+	return (0);
+}
+
+int init_game(t_game *game, char *map)
+{
+	// init mlx
+	if (init_mlx(game))
+	{
+		ft_putstr_fd("Mlx creation failed\n", 2);
+		free_mlx(game);
+		return (1);
+	}
+	// init player
+	if (init_player(game))
+	{
+		ft_putstr_fd("Player init failed\n", 2);
+		free_mlx(game);
+		return (1);
+	}
+	// init texture
+	if (init_texture(game))
+	{
+		ft_putstr_fd("Texture init failed\n", 2);
+		free_mlx(game);
+		return (1);
+	}
+	// event handling
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 09:47:48 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/29 04:48:48 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/29 04:49:23 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	*ft_memset(void *par, int replace, size_t len)
 		ptr++;
 		len--;
 	}
-	return (game);
+	return (par);
 }

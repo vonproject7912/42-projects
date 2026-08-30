@@ -6,22 +6,24 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:19:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/29 10:29:26 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/30 13:24:09 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
 // event handling
-void even_handling(t_game *game)
+void	even_handling(t_game *game)
 {
 	mlx_hook(game->window, KeyPress, KeyPressMask, key_handling, game);
-	mlx_hook(game->window, KeyRelease, KeyReleaseMask, key_release_handling, game);
-	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, Close_window, game);
+	mlx_hook(game->window, KeyRelease, KeyReleaseMask, key_release_handling,
+		game);
+	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, Close_window,
+		game);
 	mlx_loop_hook(game->mlx_connection, render, game);
 }
 
-int key_handling(int keysym, t_game *game)
+int	key_handling(int keysym, t_game *game)
 {
 	if (keysym == KEY_W)
 		game->player.move_up = 1;
@@ -40,7 +42,7 @@ int key_handling(int keysym, t_game *game)
 	return (0);
 }
 
-int key_release_handling(int keysym, t_game *game)
+int	key_release_handling(int keysym, t_game *game)
 {
 	if (keysym == KEY_W)
 		game->player.move_up = 0;
@@ -57,7 +59,7 @@ int key_release_handling(int keysym, t_game *game)
 	return (0);
 }
 
-int Close_window(t_game *game)
+int	Close_window(t_game *game)
 {
 	free_mlx(game);
 	exit(EXIT_SUCCESS);

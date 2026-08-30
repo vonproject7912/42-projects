@@ -6,16 +6,16 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 09:47:48 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/29 04:49:23 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/30 13:24:15 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void ft_putstr_fd(char *str, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{

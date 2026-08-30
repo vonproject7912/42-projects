@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 10:28:12 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:21:33 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:27:12 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int	render_frame(t_game *game)
 		move_player(game, dy, -dx);
 	while (x < WIDTH)
 	{
-		cast_ray(game, x);
 		// calculate the ray position
+		cast_ray(game, x);
 		// direction compute_wall_slice(game->rays, HEIGHT);
+		compute_wall_slice(game->rays, HEIGHT);
 		// calculate the wall distance
 		draw_column(game, x, game->rays); // render a column
 		x++;

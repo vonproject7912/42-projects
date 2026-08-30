@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 02:56:17 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:19:45 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:30:24 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ void			rotate_player(t_game *game, double angle);
 
 // DDA & color
 void			cast_ray(t_game *game, int x);
+void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int				get_texture_color(t_img *texture, int tex_x, int tex_y);
 void			draw_column(t_game *game, int x, t_ray *ray);
 

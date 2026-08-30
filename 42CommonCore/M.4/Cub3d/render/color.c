@@ -6,11 +6,21 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 22:11:07 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/30 22:42:57 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:29:55 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*pixel;
+
+	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
+		return ;
+	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)pixel = color;
+}
 
 // read a 32-bit color from a image texture coordinate
 int	get_texture_color(t_img *texture, int tex_x, int tex_y)

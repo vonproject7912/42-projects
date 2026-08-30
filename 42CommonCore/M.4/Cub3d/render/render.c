@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 10:28:12 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/30 23:49:23 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:21:33 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	compute_wall_slice(t_ray *ray, int screen_height)
 		ray->draw_end = screen_height - 1;
 }
 
-void	render_frame(t_game *game)
+int	render_frame(t_game *game)
 {
-	int x;
-	double dx;
-	double dy;
+	int		x;
+	double	dx;
+	double	dy;
 
 	x = 0;
 	// get the movemement
@@ -64,12 +64,15 @@ void	render_frame(t_game *game)
 		move_player(game, dy, -dx);
 	while (x < WIDTH)
 	{
-		cast_ray(game, x); // calculate the ray position / direction
-		compute_wall_slice(game->rays, HEIGHT); // calculate the wall distance
+		cast_ray(game, x);
+		// calculate the ray position
+		// direction compute_wall_slice(game->rays, HEIGHT);
+		// calculate the wall distance
 		draw_column(game, x, game->rays); // render a column
 		x++;
 	}
 	// push the result to the screen
 	mlx_put_image_to_window(game->mlx_connection, game->window,
 		game->screen.img_ptr, 0, 0);
+	return (0);
 }

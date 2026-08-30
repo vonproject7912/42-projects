@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 08:48:43 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/29 08:49:17 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:17:29 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void free_mlx(t_game *game)
 	int i;
 
 	i = 0;
+	if (game->rays)
+		free(game->rays);
 	// free the image before the connection
 	if (game->screen.img_ptr)
 		mlx_destroy_image(game->mlx_connection, game->screen.img_ptr);

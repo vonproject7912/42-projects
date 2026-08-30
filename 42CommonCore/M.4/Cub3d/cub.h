@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 02:56:17 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/30 23:54:54 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:19:45 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,6 @@ void			draw_column(t_game *game, int x, t_ray *ray);
 
 // render
 void			compute_wall_slice(t_ray *ray, int screen_height);
-void			render_frame(t_game *game);
+int				render_frame(t_game *game);
 
 #endif

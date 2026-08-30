@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/30 13:28:26 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:16:16 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	init_player(t_game *game)
 	game->player.move_left = 0;
 	game->player.rotate_right = 0;
 	game->player.rotate_left = 0;
+	game->rays = malloc(sizeof(t_ray));
+	if (!game->rays)
+		return (1); 
 	return (0);
 }
 

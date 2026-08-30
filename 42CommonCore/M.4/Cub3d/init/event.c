@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:19:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/30 13:26:17 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:19:18 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	even_handling(t_game *game)
 		game);
 	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, close_window,
 		game);
-	mlx_loop_hook(game->mlx_connection, render, game);
+	mlx_loop_hook(game->mlx_connection, render_frame, game);
 }
 
 int	key_handling(int keysym, t_game *game)

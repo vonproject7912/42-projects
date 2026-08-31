@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 10:28:12 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:27:12 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 15:33:02 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	compute_wall_slice(t_ray *ray, int screen_height)
 	// Start at mid-screen (screen_height/ 2) and move up by half the line height.
 	ray->draw_start = -ray->line_height / 2 + screen_height / 2;
 	// clamp to top of screen (0) to prevent drawing outside window memory.
+	ray->start_unclamped = ray->draw_start;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
 	// start at mid-screen and move down by half the line lenght
@@ -56,9 +57,9 @@ int	render_frame(t_game *game)
 	// MOVE BACKWARD opposite to direction vector (-dx, -dy)
 	if (game->player.move_down)
 		move_player(game, -dx, -dy);
-	// MOVE RIGHT perp. vector relative to forward direction (-dy, dx)
+	// MOVE RIGHT perp. vector relative to forward direction (dy, -dx)
 	if (game->player.move_right)
-		move_player(game, -dy, dx);
+		move_player(game, dy, -dx);
 	// MOVE LEFT perp. vector opposite to right strafe (dy, -dx)
 	if (game->player.move_left)
 		move_player(game, dy, -dx);

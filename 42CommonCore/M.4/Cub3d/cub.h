@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 02:56:17 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 01:23:39 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 15:32:34 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_ray
 	int			draw_start;
 	int			draw_end;
 	int			line_height;
+	int			start_unclamped;
 	double		wall_x;
 }				t_ray;
 

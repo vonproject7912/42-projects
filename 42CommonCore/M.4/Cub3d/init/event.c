@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:19:47 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:19:18 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 14:58:11 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	key_handling(int keysym, t_game *game)
 	if (keysym == KEY_D)
 		game->player.move_right = 1;
 	if (keysym == KEY_LEFT)
-		game->player.rotate_left = 1;
-	if (keysym == KEY_RIGHT)
 		game->player.rotate_right = 1;
+	if (keysym == KEY_RIGHT)
+		game->player.rotate_left = 1;
 	if (keysym == KEY_ESC)
 		close_window(game);
 	return (0);
@@ -53,9 +53,9 @@ int	key_release_handling(int keysym, t_game *game)
 	if (keysym == KEY_D)
 		game->player.move_right = 0;
 	if (keysym == KEY_LEFT)
-		game->player.rotate_left = 0;
-	if (keysym == KEY_RIGHT)
 		game->player.rotate_right = 0;
+	if (keysym == KEY_RIGHT)
+		game->player.rotate_left = 0;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 22:11:07 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:55:50 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 15:35:32 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,12 @@ void	draw_column(t_game *game, int x, t_ray *ray)
 		{
             // inside wall slice -> calculate texture Y coordinate via linear mapping:
             // (Current wall Y distance) / (Total wall line height) * (Texture height)
-			tex_y = (int)((y - ray->draw_start) * tex->img.height
+				tex_y = (int)((y - ray->start_unclamped) * tex->img.height
 					/ (double)ray->line_height);
+				if (tex_y < 0)
+					tex_y = 0;
+				if (tex_y >= tex->img.height)
+					tex_y = tex->img.height - 1;
             // fetch texture pixel color and write to screen frame buffer
 			color = get_texture_color(&tex->img, tex_x, tex_y);
 			my_mlx_pixel_put(&game->screen, x, y, color);

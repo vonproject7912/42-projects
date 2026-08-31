@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 10:28:12 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 15:33:02 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 16:13:11 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	render_frame(t_game *game)
 		move_player(game, dy, -dx);
 	// MOVE LEFT perp. vector opposite to right strafe (dy, -dx)
 	if (game->player.move_left)
-		move_player(game, dy, -dx);
+		move_player(game, -dy, dx);
 	while (x < WIDTH)
 	{
 		// calculate the ray position

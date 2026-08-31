@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 09:45:41 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:24:10 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 16:14:22 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main (int ac, char **av)
         return (1);
 	}
 	ft_memset(&game, 0, sizeof(t_game)); // init data
+	game.map.floor_color = -1;
+	game.map.ceiling_color = -1;
 	parse_file(av[1], &game);
 	if (init_game(&game, av[1])) // init struct
 		return (1);

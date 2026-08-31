@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 01:21:31 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 21:29:19 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	init_player(t_game *game)
 // init texture
 int	init_texture(t_game *game)
 {
-	int	i;
-
+	int i;
+	
 	i = 0;
 	while (i < 4)
 	{
@@ -109,6 +109,5 @@ int	init_game(t_game *game, char *map)
 		free_mlx(game);
 		return (1);
 	}
-	// event handling
 	return (0);
 }

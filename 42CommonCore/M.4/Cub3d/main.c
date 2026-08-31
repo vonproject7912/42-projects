@@ -6,20 +6,20 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 09:45:41 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 16:14:22 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 21:31:39 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int main (int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_game game;
+	t_game	game;
 
 	if (ac != 2) // argument check
 	{
 		ft_putstr_fd("Usage: ./cub3D <map.cub>\n", 2);
-        return (1);
+		return (1);
 	}
 	ft_memset(&game, 0, sizeof(t_game)); // init data
 	game.map.floor_color = -1;

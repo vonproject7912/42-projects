@@ -6,13 +6,14 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 02:56:17 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 15:57:05 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 21:31:46 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "Libft/libft.h"
 # include "minilibx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -22,7 +23,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "Libft/libft.h"
 
 # define WIDTH 1280
 # define HEIGHT 720

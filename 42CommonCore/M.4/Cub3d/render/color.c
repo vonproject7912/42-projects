@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 22:11:07 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:29:55 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 00:55:50 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 
+	if (!img || !img->addr)
+		return ;
 	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
 		return ;
 	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));

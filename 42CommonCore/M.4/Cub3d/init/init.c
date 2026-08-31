@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 08:49:35 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:16:16 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 01:21:31 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	init_mlx(t_game *game)
 	if (game->screen.img_ptr == NULL)
 		return (1);
 	// get the screen address
-	game->screen.addr = mlx_get_data_addr(game->mlx_connection,
+	game->screen.addr = mlx_get_data_addr(game->screen.img_ptr,
 			&game->screen.bits_per_pixel, &game->screen.line_length,
 			&game->screen.endian);
 	return (0);
@@ -50,7 +50,7 @@ int	init_player(t_game *game)
 	game->player.rotate_left = 0;
 	game->rays = malloc(sizeof(t_ray));
 	if (!game->rays)
-		return (1); 
+		return (1);
 	return (0);
 }
 
@@ -62,12 +62,19 @@ int	init_texture(t_game *game)
 	i = 0;
 	while (i < 4)
 	{
+		if (!game->textures[i].path)
+			return (1);
 		// Convert the xmp file into an image
 		game->textures[i].img.img_ptr = mlx_xpm_file_to_image(game->mlx_connection,
 				game->textures[i].path, &game->textures[i].img.width,
 				&game->textures[i].img.height);
 		if (!game->textures[i].img.img_ptr)
+		{
+			ft_putstr_fd("Failed to load XPM file: ", 2);
+			ft_putstr_fd(game->textures[i].path, 2);
+			ft_putstr_fd("\n", 2);
 			return (1);
+		}
 		// get the adress to the first pixel
 		game->textures[i].img.addr = mlx_get_data_addr(game->textures[i].img.img_ptr,
 				&game->textures[i].img.bits_per_pixel,
@@ -80,6 +87,7 @@ int	init_texture(t_game *game)
 
 int	init_game(t_game *game, char *map)
 {
+	(void)map;
 	// init mlx
 	if (init_mlx(game))
 	{

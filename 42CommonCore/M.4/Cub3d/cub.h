@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 02:56:17 by vonpr             #+#    #+#             */
-/*   Updated: 2026/08/31 00:30:24 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 01:23:39 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@
 # define FOV 60
 # define MAX_MAP_LINES 1000
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_ESC 53
+# define KEY_W XK_w
+# define KEY_A XK_a
+# define KEY_S XK_s
+# define KEY_D XK_d
+# define KEY_LEFT XK_Left
+# define KEY_RIGHT XK_Right
+# define KEY_ESC XK_Escape
 
 enum			e_wall
 {
@@ -155,7 +155,7 @@ void			free_mlx(t_game *game);
 int				init_mlx(t_game *game);
 int				init_player(t_game *game);
 int				init_texture(t_game *game);
-int				init_game(t_game *game, char *map);
+int				init_game(t_game *game, char *);
 
 // event
 void			even_handling(t_game *game);

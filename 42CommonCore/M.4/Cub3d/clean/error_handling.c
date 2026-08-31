@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 10:50:03 by hadmessa          #+#    #+#             */
-/*   Updated: 2026/08/31 15:50:09 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 20:28:13 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void parse_error(t_game *game, char *msg)
     free_game(game);
     exit(1);
 }
-

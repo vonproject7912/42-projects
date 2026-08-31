@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 10:49:37 by hadmessa          #+#    #+#             */
-/*   Updated: 2026/08/31 20:05:24 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/08/31 20:30:12 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ void    map_filler(int fd, char *first_line, t_game *game)
     game->map.grid = lines;
     game->map.height = count;
 }
-

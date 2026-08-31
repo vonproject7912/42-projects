@@ -6,7 +6,7 @@
 #    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 01:09:26 by vonpr             #+#    #+#              #
-#    Updated: 2026/08/31 15:55:41 by vonpr            ###   ########.fr        #
+#    Updated: 2026/08/31 20:31:23 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,11 @@ all: init_progress $(NAME)
 init_progress:
 	@mkdir -p $(OBJ_DIR)
 	@rm -f $(COUNT_FILE)
-	@echo "$(BOLD_GREEN)🌱 growing $(NAME)...$(RESET)"
+	@echo "$(BOLD_GREEN) growing $(NAME)...$(RESET)"
 
 $(NAME): $(MLX_LIB) $(LIBFT_LIB) $(OBJS)
 	@$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
-	@printf "\n$(BOLD_GREEN)🌿 $(NAME) is ready!$(RESET)\n"
+	@printf "\n$(BOLD_GREEN)🌱 $(NAME) is ready!$(RESET)\n"
 
 $(MLX_LIB):
 	@if [ -f $(MLX_DIR)/Makefile ]; then \
@@ -96,11 +96,11 @@ clean:
 	@$(RM) -r $(OBJ_DIR)
 	@if [ -f $(MLX_DIR)/Makefile ]; then $(MAKE) -s -C $(MLX_DIR) clean > /dev/null; fi
 	@if [ -f $(LIBFT_DIR)/Makefile ]; then $(MAKE) -s -C $(LIBFT_DIR) clean > /dev/null; fi
-	@echo "$(GREEN)🍂 objects cleaned$(RESET)"
+	@echo "$(GREEN) objects cleaned$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(GREEN)🔥 $(NAME) removed$(RESET)"
+	@echo "$(GREEN)🍂 $(NAME) removed$(RESET)"
 
 re: fclean all
 

@@ -6,12 +6,12 @@
 /*   By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 15:30:32 by mosriji           #+#    #+#             */
-/*   Updated: 2026/10/29 15:56:20 by mosriji          ###   ########.fr       */
+/*   Updated: 2026/10/29 16:25:08 by mosriji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <cctype>
+#include <iostream>
 
 int main(int ac, char **av)
 {

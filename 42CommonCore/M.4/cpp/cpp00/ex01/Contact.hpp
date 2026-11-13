@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 16:16:43 by mosriji           #+#    #+#             */
-/*   Updated: 2026/10/29 17:41:46 by mosriji          ###   ########.fr       */
+/*   Updated: 2026/11/13 12:09:17 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <cctype>
+#include <string>
 #include <iostream>
+#include <iomanip>
 
 class Contact
 {
@@ -24,29 +25,21 @@ class Contact
     std::string nickname;
     std::string phoneNumber;
     std::string darkestSecret;
+    static std::string truncate(const std::string &str);
     
     public:
-    void setFirstName(std::string NewFirstName)
-    {
-        // "this" is a pointer to the current contact
-        this->firstName = NewFirstName;
-    }
-    void setLastName(std::string NewLastName)
-    {
-        this->lastName = NewLastName;
-    }
-    void setNickname(std::string NewNickname)
-    {
-        this->nickname = NewNickname;
-    }
-    void setPhoneNumber(std::string NewPhoneNumber)
-    {
-        this->phoneNumber = NewPhoneNumber;
-    }
-    void setDarkestSecret(std::string NewDarkestSecret)
-    {
-        this->darkestSecret = NewDarkestSecret;
-    }
+    void setFirstName(const std::string &NewFirstName);
+    void setLastName(const std::string &NewLastName);
+    void setNickname(const std::string &NewNickname);
+    void setPhoneNumber(const std::string &NewPhoneNumber);
+    void setDarkestSecret(const std::string &NewDarkestSecret);
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    std::string getNickname() const;
+    std::string getPhoneNumber() const;
+    std::string getDarkestSecret() const;
+    void displayRow(int index) const;
+    void displayFull() const;
 };
 
 #endif

@@ -6,23 +6,24 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 16:16:37 by mosriji           #+#    #+#             */
-/*   Updated: 2026/11/14 15:56:11 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/16 17:27:28 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+// if over 10 char the 9th is a '.'
 std::string Contact::truncate(const std::string &str)
 {
     if (str.length() > 10)
         return (str.substr(0, 9) + ".");
-    return str;
+    // substr takes the start and the end
+    return (str);
 }
 
-// setters
+// setters -- changes contact informations
 void Contact::setFirstName(const std::string &newFirstName)
 {
-    // "this" is a pointer to the current contact
     this->firstName = newFirstName;
 }
 
@@ -46,7 +47,7 @@ void Contact::setDarkestSecret(const std::string &newDarkestSecret)
     this->darkestSecret = newDarkestSecret;
 }
 
-// getters
+// getters -- gets data from the private area of the class
 std::string Contact::getFirstName() const 
 {
     return (firstName);
@@ -72,7 +73,6 @@ std::string Contact::getDarkestSecret() const
     return (darkestSecret);
 }
 
-// display
 void Contact::displayRow(int index) const {
     std::cout << std::setw(10) << index << "|"
                 << std::setw(10) << truncate(firstName) << "|"

@@ -3,10 +3,36 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+         #
+#    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 16:17:09 by mosriji           #+#    #+#              #
-#    Updated: 2026/10/29 16:17:10 by mosriji          ###   ########.fr        #
+#    Updated: 2026/11/16 16:54:35 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME     = phonebook
+CXX      = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRCS     = main.cpp Contact.cpp PhoneBook.cpp
+OBJS     = $(SRCS:.cpp=.o)
+HEADERS  = Contact.hpp PhoneBook.hpp
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@echo "Compiled !"
+
+%.o: %.cpp $(HEADERS)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	@rm -f $(OBJS)
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

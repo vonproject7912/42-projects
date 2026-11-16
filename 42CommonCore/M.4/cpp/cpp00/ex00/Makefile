@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mosriji <mosriji@student.42.fr>            +#+  +:+       +#+         #
+#    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 15:46:37 by mosriji           #+#    #+#              #
-#    Updated: 2026/10/29 15:46:39 by mosriji          ###   ########.fr        #
+#    Updated: 2026/11/16 16:53:53 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,17 @@ OBJS    = $(SRCS:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@echo "Compiled !"
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+%.o: %.cpp $(HEADERS)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

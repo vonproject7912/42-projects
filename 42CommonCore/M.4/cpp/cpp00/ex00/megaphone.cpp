@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 15:30:32 by mosriji           #+#    #+#             */
-/*   Updated: 2026/11/16 17:03:10 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/16 17:07:33 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int main(int ac, char **av)
         j = 0;
         while (av[i][j])
         {
+            // toupper takes only one char => looping over each arg
             std::cout << (char)std::toupper(av[i][j]);
-            j++;
+            j++; // toupper returns a int
         }
         std::cout << " ";
         i++;

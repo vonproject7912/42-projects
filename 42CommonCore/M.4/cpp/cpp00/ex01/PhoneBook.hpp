@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 16:17:43 by mosriji           #+#    #+#             */
-/*   Updated: 2026/11/13 13:25:05 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/16 08:40:00 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 #include <string>
 #include <cctype>
+#include <iomanip>
 #include <iostream>
+#include <cstdlib>
 #include "Contact.hpp"
 
 class PhoneBook 
@@ -24,11 +26,14 @@ class PhoneBook
     int count;
     int index;
     Contact Contacts[8];
-    int readField(const std::string &quest, std::string &input);
+    int readField(const std::string &quest, 
+        std::string &input) const;
+    int readIndex() const;
     
     public:
     PhoneBook();
     int addContact();
+    int searchContact() const;
 };
 
 #endif

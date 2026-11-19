@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 20:22:07 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/19 20:22:21 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/19 20:32:48 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void randomChump(std::string name)
 {
-    Zombie Walker(name);
-    Walker.announce();
+    Zombie Chump(name);
+    Chump.announce();
 }

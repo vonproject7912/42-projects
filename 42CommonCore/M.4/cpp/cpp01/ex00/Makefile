@@ -6,7 +6,7 @@
 #    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/19 18:14:53 by vonpr             #+#    #+#              #
-#    Updated: 2026/11/19 20:06:57 by vonpr            ###   ########.fr        #
+#    Updated: 2026/11/19 20:23:11 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME     = zombie
 CXX      = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS     = main.cpp Zombie.cpp
+SRCS     = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJS     = $(SRCS:.cpp=.o)
-HEADERS  = Zombie.hpp 
+HEADERS  = Zombie.hpp
 
 all: $(NAME)
 

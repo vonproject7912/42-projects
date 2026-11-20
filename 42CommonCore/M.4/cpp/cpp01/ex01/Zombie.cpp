@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 16:15:43 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/20 17:34:53 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/20 19:29:16 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ Zombie::Zombie(): _name(""){
 Zombie::~Zombie()
 {
     std::cout << "Dropped dead..." << std::endl;
+}
+
+// set the name
+void Zombie::setName(std::string name)
+{
+    this->_name = name;
 }
 
 // annonce itself

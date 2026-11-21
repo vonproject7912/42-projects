@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 13:51:44 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/21 14:08:49 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/21 18:46:37 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ class Weapon {
         std::string _type;
 
     public:
-        std::string getType() const;
+        Weapon(std::string given_weapon);
+        const std::string &getType() const;
         void setType(std::string new_type);
 };
 

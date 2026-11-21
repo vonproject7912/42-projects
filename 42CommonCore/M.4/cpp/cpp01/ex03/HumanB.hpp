@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 16:16:27 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/21 19:16:00 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/21 19:22:59 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class HumanB{
     private:
-        Weapon *_Weapon;
+        Weapon *_weapon;
         std::string _name;
     public:
         HumanB(std::string name);

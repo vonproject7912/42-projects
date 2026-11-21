@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 13:53:04 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/21 19:15:14 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/21 19:22:07 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class HumanA {
     private:
-        Weapon &_Weapon;
+        Weapon &_weapon;
         std::string _name;
     public:
         HumanA(std::string name, Weapon &given_weapon);

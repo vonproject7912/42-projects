@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 16:16:50 by mosriji           #+#    #+#             */
-/*   Updated: 2026/11/16 16:56:23 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/21 15:21:47 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int main ()
         else if (line == "EXIT")
             return (0);
         else
-            std::cout << "Command doesn't exist, please try again" << std::endl;
+            std::cout << "Command doesn't exist, please try again." << std::endl;
     }
 }

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 13:51:05 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/21 19:27:54 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/25 00:53:22 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+// given mid main
 int main()
 {
     {

@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 00:03:23 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/24 19:56:09 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/24 21:38:02 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av)
     // Arguments check
     if (ac != 4)
     {
-        std::cout << "Incorrect number of arguments: <file_name> <s1> <s2>" << std::endl;
+        std::cerr << "Incorrect number of arguments: <file_name> <s1> <s2>" << std::endl;
         return (1);
     }
     s2 = av[3];
@@ -60,7 +60,6 @@ int main(int ac, char **av)
     std::string line;
     while (std::getline(file_one, line))
     {
-        i = 0;
         pos = 0;
         while ((i = line.find(s1, pos)) != std::string::npos)
         {

@@ -6,11 +6,11 @@
 #    By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/21 13:50:37 by vonpr             #+#    #+#              #
-#    Updated: 2026/11/21 13:55:42 by vonpr            ###   ########.fr        #
+#    Updated: 2026/11/24 15:32:42 by vonpr            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     = brain
+NAME     = humans
 CXX      = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

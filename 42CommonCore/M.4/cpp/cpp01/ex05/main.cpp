@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 15:30:02 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/24 23:20:50 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/24 23:23:05 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ int main()
     std::cout << "Test for unknown call: ";
     call.complain("feur");
     std::cout << std::endl;
+    return (0);
 }

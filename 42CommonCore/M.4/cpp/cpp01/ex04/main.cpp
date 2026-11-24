@@ -6,7 +6,7 @@
 /*   By: vonpr <vonpr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 00:03:23 by vonpr             #+#    #+#             */
-/*   Updated: 2026/11/24 19:37:04 by vonpr            ###   ########.fr       */
+/*   Updated: 2026/11/24 19:56:09 by vonpr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int main(int ac, char **av)
     std::string::size_type i;
     std::string::size_type pos;
 
-    pos = 0; 
     // Arguments check
     if (ac != 4)
     {
@@ -33,9 +32,9 @@ int main(int ac, char **av)
     s2 = av[3];
     s1 = av[2];
     file = av[1];
-    if (s1.empty() || s2.empty() || file.empty())
+    if (s1.empty() || file.empty())
     {
-        std::cout << "Empty arguments, please try again." << std::endl;
+        std::cerr << "Empty arguments, please try again." << std::endl;
         return (1);
     }
     
@@ -44,7 +43,7 @@ int main(int ac, char **av)
     file_one.open(av[1]);
     if (!file_one.is_open())
     {
-        std::cout << "Failed to open the file: " << av[1] << std::endl;
+        std::cerr << "Failed to open the file: " << av[1] << std::endl;
         return (1);
     }
     
@@ -53,7 +52,7 @@ int main(int ac, char **av)
     std::ofstream file_two(of_name.c_str());
     if (!file_two.is_open())
     {
-        std::cout << "Failed to open the file: " << av[2] << std::endl;
+        std::cerr << "Failed to open the file: " << of_name << std::endl;
         return (1);
     }
 
